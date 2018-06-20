@@ -36,7 +36,7 @@ Behin [R](http://www.cran.r-project.org/) eta [Jupyter](http://jupyter.org/) ins
   <img src="Images/R_console.png">
 </p>
 
-eta [IRkernel](https://irkernel.github.io/)-en web orrian adierazten den bezala ([link](https://irkernel.github.io/installation/)), hurrengo idatziko dugu:
+eta [IRkernel](https://irkernel.github.io/)-en web orrian adierazten den bezala ([link](https://irkernel.github.io/installation/)), hurrengoa idatziko dugu [R](http://www.cran.r-project.org/)-ko kontsolan:
 
 `install.packages(c('repr', 'IRdisplay', 'evaluate', 'crayon', 'pbdZMQ', 'devtools', 'uuid', 'digest'))`
 
