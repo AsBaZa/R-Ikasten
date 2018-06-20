@@ -5,6 +5,7 @@ Hona igotako fitxategien helburua [R](http://www.cran.r-project.org/) programazi
 Erabiltzailearen lehen programazio-lengoaia baldin bada, [Jupyter](http://jupyter.org/) erabiltzea **GOMENDATZEN** da, instalatzeko zailagoa izan daitekeen arren, kodea eta testua era erakargarriago eta ulerterrazagoan ikusten delako. Hala ere, nahi izanezkero [RStudio](https://www.rstudio.com/) bidez ere jarrai daiteke [R](http://www.cran.r-project.org/)-ko sarrera hau.
 
 Kurtso hau jarraitzeko, bi aukera daude:
- - [R](http://www.cran.r-project.org/) eta [Jupyter](http://jupyter.org/)
+ - [R](http://www.cran.r-project.org/) eta [Jupyter](http://jupyter.org/) instalatzea
+ 
 edo
- - [R](http://www.cran.r-project.org/) eta [RStudio](https://www.rstudio.com/)
+ - [R](http://www.cran.r-project.org/) eta [RStudio](https://www.rstudio.com/) instalatzea
