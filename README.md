@@ -9,3 +9,8 @@ Kurtso hau jarraitzeko, bi aukera daude:
  
 edo
  - [R](http://www.cran.r-project.org/) eta [RStudio](https://www.rstudio.com/) instalatzea
+
+## R instalatzen
+
+[R](http://www.cran.r-project.org/) instalatzeko, klikatu hurrengo [link](https://cran.r-project.org/) honetan. Bertan, gure sistema eragilea aukeratu beharko dugu.
+
