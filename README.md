@@ -15,3 +15,7 @@ edo
 [R](http://www.cran.r-project.org/) instalatzeko, klikatu hurrengo [link](https://cran.r-project.org/) honetan. Bertan, gure sistema eragilea aukeratu beharko dugu.
 
 ![Irudia 1](Images/R_install.png "Irudia 1")
+
+Windows sistema eragilea baldin baduzu eta [R](http://www.cran.r-project.org/) lengoaian berria baldin bazara, egin klik hurrengo link horretan eta ondoren `Download R x.x.x for Windows`
+
+![Irudia 2](Images/R_install_windows.png "Irudia 2")
