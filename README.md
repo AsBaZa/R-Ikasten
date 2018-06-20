@@ -32,3 +32,13 @@ Windows sistema eragilea baldin baduzu eta [R](http://www.cran.r-project.org/) l
 ## IRkernel instalatzen
 
 Behin [R](http://www.cran.r-project.org/) eta [Jupyter](http://jupyter.org/) instalatuta baldin baditugu, [IRkernel](https://irkernel.github.io/) instalatzeko prest gaude. Hasteko, [R](http://www.cran.r-project.org/) programa irekiko dugu
+<p align="center">
+  <img src="Images/R_console.png">
+</p>
+eta [IRkernel](https://irkernel.github.io/)-en web orrian adierazten den bezala ( [link](https://irkernel.github.io/installation/) ), hurrengo idatziko dugu:
+
+`install.packages(c('repr', 'IRdisplay', 'evaluate', 'crayon', 'pbdZMQ', 'devtools', 'uuid', 'digest'))`
+
+`devtools::install_github('IRkernel/IRkernel')`
+
+`IRkernel::installspec()`
