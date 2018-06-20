@@ -13,4 +13,3 @@ edo
 ## R instalatzen
 
 [R](http://www.cran.r-project.org/) instalatzeko, klikatu hurrengo [link](https://cran.r-project.org/) honetan. Bertan, gure sistema eragilea aukeratu beharko dugu.
-
