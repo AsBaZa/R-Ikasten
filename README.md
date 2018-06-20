@@ -5,7 +5,7 @@ Hona igotako fitxategien helburua [R](http://www.cran.r-project.org/) programazi
 Erabiltzailearen lehen programazio-lengoaia baldin bada, [Jupyter](http://jupyter.org/) erabiltzea **GOMENDATZEN** da, instalatzeko zailagoa izan daitekeen arren, kodea eta testua era erakargarriago eta ulerterrazagoan ikusten delako. Hala ere, nahi izanezkero [RStudio](https://www.rstudio.com/) bidez ere jarrai daiteke [R](http://www.cran.r-project.org/)-ko sarrera hau.
 
 Kurtso hau jarraitzeko, bi aukera daude:
- - [R](http://www.cran.r-project.org/) eta [Jupyter](http://jupyter.org/) instalatzea
+ - [R](http://www.cran.r-project.org/), [Jupyter](http://jupyter.org/) eta [IRkernel](https://irkernel.github.io/) instalatzea
  
 edo
  - [R](http://www.cran.r-project.org/) eta [RStudio](https://www.rstudio.com/) instalatzea
@@ -21,3 +21,14 @@ Windows sistema eragilea baldin baduzu eta [R](http://www.cran.r-project.org/) l
 <p align="center">
   <img src="Images/R_install_windows.png">
 </p>
+<p align="center">
+  <img src="Images/R_download_windows.png">
+</p>
+
+## Jupyter instalatzen
+
+[Jupyter](http://jupyter.org/) erabiltzeko [Python](https://www.python.org/) programazio-lengoaia ere instalatuta izan behar dugu. Horretarako, era errazena [Anaconda](https://www.anaconda.com/download/) instalatzea da, bertan [Jupyter](http://jupyter.org/) eta [Python](https://www.python.org/) instalatzen direlako aldi berean eta automatikoki. Hala ere, nahi izanez gero [Jupyter](http://jupyter.org/) era zuzenagoan instalatu dezakegu beraien orrialdean adierazten den bezala, nahiz eta konplexuagoa den eta ez den beraien garatzaileen gomendioa. 
+
+## IRkernel instalatzen
+
+Behin [R](http://www.cran.r-project.org/) eta [Jupyter](http://jupyter.org/) instalatuta baldin baditugu, [IRkernel](https://irkernel.github.io/) instalatzeko prest gaude. Hasteko, [R](http://www.cran.r-project.org/) programa irekiko dugu
