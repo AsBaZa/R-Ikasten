@@ -18,4 +18,6 @@ edo
 
 Windows sistema eragilea baldin baduzu eta [R](http://www.cran.r-project.org/) lengoaian berria baldin bazara, egin klik hurrengo link horretan eta ondoren `Download R x.x.x for Windows`
 
-![Irudia 2](Images/R_install_windows.png "Irudia 2")
+<p align="center">
+  <img src="Images/R_install_windows.png">
+</p>
