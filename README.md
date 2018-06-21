@@ -17,7 +17,8 @@ Era azkarrena eta errazena da [Binder](https://mybinder.org/) erabiltzea. Horret
 [Binder](https://mybinder.org/)-en kontrapuntuak ordea honako hauek dira besteak beste:
  - Momentuz Beta egoeran dago (erroreak izan ditzake).
  - Interneterako konexioa behar dugu.
- - Exekuzio denborak luzeagoak izan daitezke (Hasiera batetan ez da garrantzitsua izango, baina tamainu handiko datuekin arazo bat izan daiteke)
+ - Exekuzio denborak luzeagoak izan daitezke (Hasiera batetan ez da garrantzitsua izango, baina tamainu handiko datuekin arazo bat izan daiteke).
+ - Notebook-etan egiten ditugun aldaketak eta ariketak ez dira gordeko interneten (nahiz eta gure ordenagailuan gordetzeko aukera emango digun).
  
  
 ## R gure ordenagailuan instalatuz
