@@ -1,6 +1,6 @@
 # R-Ikasten
 
-[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/AsBaZa/R-Ikasten/blob/master/Notebook/Jupyter/1.%20R%20--%20Sarrera.ipynb)
+[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/AsBaZa/R-Ikasten/master)
 
 Hona igotako fitxategien helburua [R](http://www.cran.r-project.org/) programazio-lengoaiaren lehen pausuak euskeraz irakastea da ahalik eta era errazenean. Horretarako, [Jupyter](http://jupyter.org/)-eko eta [R-ko Notebook](https://rmarkdown.rstudio.com/r_notebooks.html)-ak edo koadernoak erabiliko dira era erakargarriago batetan irakasteko asmoarekin.
 
