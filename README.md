@@ -20,7 +20,11 @@ Era azkarrena eta errazena [Binder](https://mybinder.org/) erabiltzea da. Horret
  - Exekuzio denborak luzeagoak izan daitezke (Hasiera batetan ez da garrantzitsua izango, baina tamainu handiko datuekin arazo bat izan daiteke).
  - Notebook-etan egiten ditugun aldaketak eta ariketak ez dira gordeko interneten (nahiz eta gure ordenagailuan gordetzeko aukera emango digun).
  
-
+Bide hau hartzen baldin badugu, lehenengo Notebook-a hurrengo helbidean aurki dezakegu eta [R](http://www.cran.r-project.org/) ikasten has gaitezke zuzenean:
+ 
+<p align="center">
+  <img src="Images/jupyter_hasiera.png">
+</p>
  
  
 ## R gure ordenagailuan instalatuz
