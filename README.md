@@ -8,7 +8,7 @@ Kurtsoa bi modutan jarrai daiteke: internet bidez ([Binder](https://mybinder.org
 
 ## Internet bidez
 
-Era azkarrena eta errazena da [Binder](https://mybinder.org/) erabiltzea. Horretarako, dokumentu honen hasieran dagoen hurrengo ikonoan klik egitearekin nahikoa da:
+Era azkarrena eta errazena [Binder](https://mybinder.org/) erabiltzea da. Horretarako, dokumentu honen hasieran dagoen hurrengo ikonoan klikatu beharko dugu:
 
 <p align="center">
   <img src="Images/launch_binder.png">
@@ -19,6 +19,8 @@ Era azkarrena eta errazena da [Binder](https://mybinder.org/) erabiltzea. Horret
  - Interneterako konexioa behar dugu.
  - Exekuzio denborak luzeagoak izan daitezke (Hasiera batetan ez da garrantzitsua izango, baina tamainu handiko datuekin arazo bat izan daiteke).
  - Notebook-etan egiten ditugun aldaketak eta ariketak ez dira gordeko interneten (nahiz eta gure ordenagailuan gordetzeko aukera emango digun).
+ 
+
  
  
 ## R gure ordenagailuan instalatuz
