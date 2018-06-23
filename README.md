@@ -75,4 +75,4 @@ eta [IRkernel](https://irkernel.github.io/)-en web orrian adierazten den bezala 
 
 ### RStudio instalatzen
 
-Aurrerago esan bezala, kurtso hau [Jupyter](http://jupyter.org/) instalatu gabe ere jarrai daiteke, nahiz eta ez den gomendagarriena, kurtsoa ez dagoelako horrela bideratuta. Hala ere, [Jupyter](http://jupyter.org/) instalatzea nahi ez duen erabiltzailearentzako, [RStudio](https://www.rstudio.com/) instalatzea gomendatzen da, [link](https://www.rstudio.com/products/rstudio/download/) honen bidez. 
+Aurrerago esan bezala, kurtso hau [Jupyter](http://jupyter.org/) instalatu gabe ere jarrai daiteke, nahiz eta ez den gomendagarriena, kurtsoa ez dagoelako horrela bideratuta. Hala ere, [Jupyter](http://jupyter.org/) instalatzea nahi ez duen erabiltzailearentzako, [RStudio](https://www.rstudio.com/) instalatzea gomendatzen da, [link](https://www.rstudio.com/products/rstudio/download/) honen bidez.
