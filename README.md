@@ -31,7 +31,7 @@ Bide hau hartzen baldin badugu, lehenengo Notebook-a hurrengo helbidean aurki de
 
 Erabiltzailearen lehen programazio-lengoaia baldin bada, [Jupyter](http://jupyter.org/) erabiltzea **GOMENDATZEN** da, instalatzeko zailagoa izan daitekeen arren, kodea eta testua era erakargarriago eta ulerterrazagoan ikusten delako. Hala ere, nahi izanezkero [RStudio](https://www.rstudio.com/) bidez ere jarrai daiteke [R](http://www.cran.r-project.org/)-ko sarrera hau.
 
-Kurtso hau jarraitzeko, bi aukera daude:
+Kurtso hau lokalki jarraitzeko asmoa duenarentzko (programak ordenagailuan instalatuz), bi aukera daude:
  - [R](http://www.cran.r-project.org/), [Jupyter](http://jupyter.org/) eta [IRkernel](https://irkernel.github.io/) instalatzea
  
 edo
@@ -54,7 +54,7 @@ Windows sistema eragilea baldin baduzu eta [R](http://www.cran.r-project.org/) l
 
 ### Jupyter instalatzen
 
-[Jupyter](http://jupyter.org/) erabiltzeko [Python](https://www.python.org/) programazio-lengoaia ere instalatuta izan behar dugu. Horretarako, era errazena [Anaconda](https://www.anaconda.com/download/) instalatzea da, bertan [Jupyter](http://jupyter.org/) eta [Python](https://www.python.org/) instalatzen direlako aldi berean eta automatikoki. Hala ere, nahi izanez gero [Jupyter](http://jupyter.org/) era zuzenagoan instalatu dezakegu beraien orrialdean adierazten den bezala, nahiz eta konplexuagoa den eta ez den beraien garatzaileen gomendioa. 
+[Jupyter](http://jupyter.org/) erabiltzeko [Python](https://www.python.org/) programazio-lengoaia ere instalatuta izan behar dugu. Horretarako, era errazena [Anaconda](https://www.anaconda.com/download/) instalatzea da, bertan [Jupyter](http://jupyter.org/) eta [Python](https://www.python.org/) instalatzen direlako aldi berean eta automatikoki. Hala ere, nahi izanez gero [Jupyter](http://jupyter.org/) era zuzenagoan instalatu dezakegu beraien orrialdean adierazten den bezala, nahiz eta konplexuagoa den eta ez den garatzaileen gomendioa (alde ona, instalazio optimoagoa dela da, memoria gutxiago behar duena). 
 
 ### IRkernel instalatzen
 
@@ -70,3 +70,9 @@ eta [IRkernel](https://irkernel.github.io/)-en web orrian adierazten den bezala 
 `devtools::install_github('IRkernel/IRkernel')`
 
 `IRkernel::installspec()`
+
+3 kode lerro horiek exekutatzearekin [Jupyter](http://jupyter.org/) erabiltzeko prest egon beharko luke.
+
+### RStudio instalatzen
+
+Aurrerago esan bezala, kurtso hau [Jupyter](http://jupyter.org/) instalatu gabe ere jarrai daiteke, nahiz eta ez den gomendagarriena, kurtsoa ez dagoelako horrela bideratuta. Hala ere, [Jupyter](http://jupyter.org/) instalatzea nahi ez duen erabiltzailearentzako, [RStudio](https://www.rstudio.com/) instalatzea gomendatzen da, [link](https://www.rstudio.com/products/rstudio/download/) honen bidez. 
