@@ -7,4 +7,16 @@ Koaderno hauetan beste oinarrizko objektu batzuk aztertzen dira
     - `data.table`
   - Listak
   
-## Erabilitako fu
+## Ikusten diren funtzioak:
+ - `colnames`
+ - `cbind`
+ - `colSums`
+ - `dim`
+ - `list`
+ - `matrix`
+ - `ncol`
+ - `nrow`
+ - `rbind`
+ - `rownames`
+ - `rowSums`
+ - `sweep`
