@@ -10,11 +10,9 @@ Kurtsoa bi modutan jarrai daiteke:
 
 ## Internet bidez
 
-Era azkarrena eta errazena [Binder](https://mybinder.org/) erabiltzea da. Horretarako, dokumentu honen hasieran dagoen hurrengo ikonoan klikatu beharko dugu:
+Era azkarrena eta errazena [Binder](https://mybinder.org/) erabiltzea da. Horretarako, dokumentu honen hasieran (edo ondoren) dagoen ikonoan klikatu beharko dugu:
 
-<p align="center">
-  <img src="Images/launch_binder.png">
-</p>
+[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/AsBaZa/R-Ikasten/master)
 
 [Binder](https://mybinder.org/)-en kontrapuntuak ordea honako hauek dira besteak beste:
  - Momentuz Beta egoeran dago (erroreak izan ditzake).
