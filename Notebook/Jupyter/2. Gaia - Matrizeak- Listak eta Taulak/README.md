@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="Images/Rlogo.png">
+</p>
+
 # 2. Gaia - Matrizeak, Listak eta Taulak
 
 Koaderno hauetan beste oinarrizko objektu batzuk aztertzen dira
