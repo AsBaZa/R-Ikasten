@@ -1,3 +1,6 @@
+![Irudia 1](Images/Rlogo.png "Irudia 1")
+
+
 # 1. Gaia - Sarrera eta Oinarriak
 
 Koaderno hauetan [R](http://www.cran.r-project.org/)-ko oinarrizko kontzeptuak aztertzen dira:
