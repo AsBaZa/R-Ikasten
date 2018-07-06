@@ -11,7 +11,7 @@ Koaderno hauetan beste oinarrizko objektu batzuk aztertzen dira
     - `data.table`
   - Listak
   
-## Agertzen diren funtzioak:
+## Agertzen diren funtzioak
  - `colnames`
  - `cbind`
  - `colSums`
