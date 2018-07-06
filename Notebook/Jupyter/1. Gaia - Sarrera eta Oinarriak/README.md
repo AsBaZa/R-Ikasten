@@ -16,7 +16,7 @@ Koaderno hauetan [R](http://www.cran.r-project.org/)-ko oinarrizko kontzeptuak a
  
 Amaieran, ariketa zerrenda bat duen koaderno bat dago gai honetan zehar ikusitako kontzeptuan praktikan jartzeko.
     
-## Ikusten diren funtzioak
+## Agertzen diren funtzioak
   - `.Last.value`
   - `c`
   - `class`
