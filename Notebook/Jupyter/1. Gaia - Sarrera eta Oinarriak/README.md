@@ -1,4 +1,6 @@
-![Irudia 1](Images/Rlogo.png "Irudia 1")
+<p align="center">
+  <img src="Images/Rlogo.png">
+</p>
 
 
 # 1. Gaia - Sarrera eta Oinarriak
