@@ -23,7 +23,7 @@ Era azkarrena eta errazena [Binder](https://mybinder.org/) erabiltzea da. Horret
 Bide hau hartzen baldin badugu, lehenengo Notebook-a hurrengo helbidean aurki dezakegu eta [R](http://www.cran.r-project.org/) ikasten has gaitezke zuzenean:
  
 <p align="center">
-  <img src="Images/jupyter_hasiera.png">
+  <img src="Images/jupyter_begin.png">
 </p>
  
  
