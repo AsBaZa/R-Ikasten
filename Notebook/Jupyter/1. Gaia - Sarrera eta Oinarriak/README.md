@@ -14,10 +14,9 @@ Koaderno hauetan [R](http://www.cran.r-project.org/)-ko oinarrizko kontzeptuak a
     - `if`/`else`
     - `for`/`while`
  
-Amaieran, ariketa zerrenda bat duen koaderno bat dago gai honetan zehar ikusitako kontzeptuan praktikan jartzeko.
+Amaieran, ariketa zerrenda bat duen koaderno bat dago gai honetan zehar ikusitako kontzeptuak praktikan jartzeko.
     
 ## Agertzen diren funtzioak
-  - `.Last.value`
   - `c`
   - `class`
   - `ifelse`
