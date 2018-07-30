@@ -40,11 +40,14 @@ Instalatu beharreko programak batik bat honako 3 hauek dira:
 
 ![Irudia 1](Images/R_install.png "Irudia 1")
 
-Windows sistema eragilea baldin baduzu eta [R](http://www.cran.r-project.org/) lengoaian berria baldin bazara, egin klik hurrengo link horretan eta ondoren `Download R x.x.x for Windows`
+Windows sistema eragilea duten erabiltzaileek eta [R](http://www.cran.r-project.org/) lengoaian berria direnek, egin klik hurrengo link horretan
 
 <p align="center">
   <img src="Images/R_install_windows.png">
 </p>
+
+eta ondoren `Download R x.x.x for Windows`
+
 <p align="center">
   <img src="Images/R_download_windows.png">
 </p>
