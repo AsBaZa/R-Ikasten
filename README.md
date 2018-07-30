@@ -29,14 +29,11 @@ Bide hau hartzen baldin badugu, lehenengo Notebook-a hurrengo helbidean aurki de
  
 ## R gure ordenagailuan instalatuz
 
-[Jupyter](http://jupyter.org/) instalatzea ez da berehalako zerbait, pausu ezberdinak ditu. Hala ere, behin instalatutakoan kodea eta testua era erakargarriago eta ulerterrazagoan azaltzeko aukera ematen du eta programazio-lengoaia anitzetan erabili daiteke (era estandarrean [Python](https://www.python.org/) instalatuta dakar). [Jupyter](http://jupyter.org/) instalatzea nahi ez duen erabiltzaileak [R](http://www.cran.r-project.org/) instalatu dezake nahi duen IDE-arekin (pertsonalki [RStudio](https://www.rstudio.com/) gomendatzen da) eta kurtsoa [Binder](https://mybinder.org/) bidez jarraitu eta era lokalki exekutatuz.
+[Jupyter](http://jupyter.org/) instalatzea ez da berehalako zerbait, pausu ezberdinak ditu. Hala ere, behin instalatutakoan kodea eta testua era erakargarriago eta ulerterrazagoan azaltzeko aukera ematen du eta programazio-lengoaia anitzetan erabili daiteke (era estandarrean [Python](https://www.python.org/) instalatuta dakar). [Jupyter](http://jupyter.org/) instalatzea nahi ez duen erabiltzaileak [R](http://www.cran.r-project.org/) instalatu dezake nahi duen IDE-arekin (pertsonalki [RStudio](https://www.rstudio.com/) gomendatzen da) eta kurtsoa [Binder](https://mybinder.org/) bidez jarraitu eta kodea lokalki exekutatuz.
 
-Kurtso hau lokalki jarraitzeko asmoa duenarentzko (programak ordenagailuan instalatuz), bi aukera daude:
- - [R](http://www.cran.r-project.org/), [Jupyter](http://jupyter.org/) eta [IRkernel](https://irkernel.github.io/) instalatzea
+Instalatu beharreko programak batik bat honako 3 hauek dira:
+- [R](http://www.cran.r-project.org/), [Jupyter](http://jupyter.org/) eta [IRkernel](https://irkernel.github.io/).
  
-edo
- - [R](http://www.cran.r-project.org/) eta [RStudio](https://www.rstudio.com/) instalatzea
-
 ### R instalatzen
 
 [R](http://www.cran.r-project.org/) instalatzeko, klikatu hurrengo [link](https://cran.r-project.org/) honetan. Bertan, gure sistema eragilea aukeratu beharko dugu.
