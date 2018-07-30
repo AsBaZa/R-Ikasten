@@ -29,7 +29,7 @@ Bide hau hartzen baldin badugu, lehenengo Notebook-a hurrengo helbidean aurki de
  
 ## R gure ordenagailuan instalatuz
 
-Erabiltzailearen lehen programazio-lengoaia baldin bada, [Jupyter](http://jupyter.org/) erabiltzea **GOMENDATZEN** da, instalatzeko zailagoa izan daitekeen arren, kodea eta testua era erakargarriago eta ulerterrazagoan ikusten delako. Hala ere, nahi izanezkero [RStudio](https://www.rstudio.com/) bidez ere jarrai daiteke [R](http://www.cran.r-project.org/)-ko sarrera hau.
+[Jupyter](http://jupyter.org/) instalatzea ez da berehalako zerbait, pausu ezberdinak ditu. Hala ere, behin instalatutakoan kodea eta testua era erakargarriago eta ulerterrazagoan azaltzeko aukera ematen du eta programazio-lengoaia anitzetan erabili daiteke (era estandarrean [Python](https://www.python.org/) instalatuta dakar). [Jupyter](http://jupyter.org/) instalatzea nahi ez duen erabiltzaileak [R](http://www.cran.r-project.org/) instalatu dezake nahi duen IDE-arekin (pertsonalki [RStudio](https://www.rstudio.com/) gomendatzen da) eta kurtsoa [Binder](https://mybinder.org/) bidez jarraitu eta era lokalki exekutatuz.
 
 Kurtso hau lokalki jarraitzeko asmoa duenarentzko (programak ordenagailuan instalatuz), bi aukera daude:
  - [R](http://www.cran.r-project.org/), [Jupyter](http://jupyter.org/) eta [IRkernel](https://irkernel.github.io/) instalatzea
