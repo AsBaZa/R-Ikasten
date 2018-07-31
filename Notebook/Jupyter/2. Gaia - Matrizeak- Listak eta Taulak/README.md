@@ -15,12 +15,14 @@ Koaderno hauetan beste oinarrizko objektu batzuk aztertzen dira
  - `colnames`
  - `cbind`
  - `colSums`
+ - `data.frame`
  - `dim`
  - `list`
  - `matrix`
  - `ncol`
  - `nrow`
  - `rbind`
+ - `read.csv`
  - `rownames`
  - `rowSums`
  - `sweep`
