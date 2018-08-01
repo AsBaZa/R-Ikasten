@@ -16,7 +16,9 @@ Koaderno hauetan beste oinarrizko objektu batzuk aztertzen dira
  - `cbind`
  - `colSums`
  - `data.frame`
+ - `data.table`
  - `dim`
+ - `fread`
  - `list`
  - `matrix`
  - `ncol`
