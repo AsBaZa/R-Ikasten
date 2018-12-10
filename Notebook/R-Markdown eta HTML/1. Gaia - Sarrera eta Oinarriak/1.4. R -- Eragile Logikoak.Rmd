@@ -1,0 +1,262 @@
+<p align="center">
+    <img src="Images/Rlogo.png"/>
+</p>
+
+Koaderno honetan, programazioko beste oinarrizko atal bat ikusiko da: **eragile logikoena**. 
+# R-n Lehen Pausuak: Eragile Logikoak
+Programazio-lengoaia guztiak edo ia guztiak egitura logiko baten bidez osatuta daude. Sistema sinpleenek ere bere baitan izaten dute. Sistema bitar baten oinarritzen direnez gehienak, informazioa 0 edo 1 bidez pasatzen da, BAI edo EZ, EGIA edo GEZURRA. Horregatik eta oso erabilgarriak direlako garrantzia berezia izaten dute eragile logikoek.
+
+Hurrengo taulan, eragile logiko oinarrizkoenak `R`-n nola idazten diren agertzen da.
+
+<p align="center">
+<img src="Images/Eragile Logikoak.png"/>
+</p>
+
+Has gaitezen adibide erraz batekin, 2 zenbakia 3 baino txikiagoa al da?
+
+
+```{r}
+2 < 3
+```
+
+Aurreko lerroa exekutatu baldin badugu, erantzun bezala `TRUE` itzuli digula ikusiko dugu, hau da, jarri duguna EGIA dela. Berdina egin dezakegu beste eragile logiko batzuekin ere.
+
+
+```{r}
+#2 zenbakia 3 zenbakia BAINO TXIKIAGOA EDO BERDINA da?
+2 <= 3
+
+#2 zenbakia 3 BAINO HANDIAGOA da?
+2 > 3
+
+#2 zenbakia 3 BAINO HANDIAGOA EDO BERDINA da?
+2 >= 3
+
+#2 zenbakia 3 zenbakiaren BERDINA da?
+2 == 3
+
+#2 zenbakia 3 zenbakiaren EZBERDINA da?
+2 != 3
+```
+
+Zenbakiekin egin dugun gauza berdina egin dezakegu aldagai logikoekin:
+ - Berdintzen kasuan:
+
+
+```{r}
+TRUE == TRUE
+
+TRUE == FALSE
+
+FALSE == TRUE
+
+FALSE == FALSE
+```
+
+**Oharra**:*Berdintzarentzako `==` erabili behar da eta ez da `=`-rekin nahastu behar. `R`-n, `=` ikurrak `<-` ikurraren ia funtzio berdina betetzen du, aldagaiei balioa esleitzea.*
+ - Ezberdintzen kasuan:
+
+
+```{r}
+TRUE != TRUE
+
+TRUE != FALSE
+
+FALSE != TRUE
+
+FALSE != FALSE
+```
+
+Orain, aldagai logikoen bidez goiko irudiko beste 3 eragile logikoak erabiliko ditugu:
+
+
+```{r}
+#Bietako bat EGIA da? Hau da, bata EDO bestea EGIA al da?
+
+TRUE | TRUE
+
+TRUE | FALSE
+
+FALSE | TRUE
+
+FALSE | FALSE
+```
+
+
+```{r}
+#Biak al dira EGIA? Hau da, bata ETA bestea EGIAK dira?
+
+TRUE & TRUE
+
+TRUE & FALSE
+
+FALSE & TRUE
+
+FALSE & FALSE
+```
+
+Azken bi eragiketa hauek, luzeera handiagoko kateetan ere erabili daiteke
+
+
+```{r}
+#Denak al dira EGIA?
+TRUE & TRUE & FALSE & TRUE
+```
+
+
+```{r}
+#Guztietatik bat behintzat EGIA al da?
+TRUE | TRUE | FALSE | TRUE
+```
+
+## Eragile Logikoak Bektoreetan
+Programazio-lengoaietan berria den pertsona batentzako, baliteke eragile logikoeri buruz orain arte ikusitakoak ezer gutxi esatea, baina aplikazio anitz dituzte eta horietako asko oso erabilgarriak. Hasteko, bektoreetan duten garrantzia aztertuko dugu. Ikus dezagun hurrengo adibidea:
+
+
+```{r}
+#x bektorea definitu
+x <- c(-1,1,5,2,-4,6,-2,3,1,10)
+
+#x bektoreko elementuak 0 baino handiagoak dira?
+x > 0
+```
+
+Aurreko emaitza aztertuz gero, `x > 0` bidez beste bektore bat lortu dugu, `TRUE` eta `FALSE` bidez osatutakoa (jarritako baldintzari lotuta).
+
+Orain, $[0,8]$ tartean dauden elementuak ikusiko ditugu:
+
+
+```{r}
+(x >= 0) & (x <= 8)
+```
+
+ - **Oharra:** *Aurreko lerroan parentesiak jarri dira ulerterrazagoa izateko, baina parentesiak jarri gabe ere emaitza berdina lortuko genuen, desberdintzak lehentasuna duelako kasu horretan. `R`-k dituen lehentasunak ez baldin baditugu ezagutzen (normala den bezala) edo dudak baldin baditugu, parentesiak erabiltzea gomendatzen da, lehentasuna ziurtatzeko.*
+
+Gogoratu dezagun nola lor ditzazkegun bektoreen barneko elementuak:
+
+
+```{r}
+#4. elementua lortzeko
+x[4]
+
+#1. elementutik 4. elementura lortzeko
+x[1:4]
+```
+
+### Bektoreen elementuak `TRUE` eta `FALSE` bidez
+
+Oraingo honetan, eragiketa berdina egiteko beste modu bat ikusiko dugu, aldagai logikoen bidez:
+
+
+```{r}
+#4. elementua lortzeko
+x[c(FALSE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE)]
+#beste modu bat
+#x[c(F,F,F,T,F,F,F,F,F,F)]
+
+#1. elementutik 4. elementura lortzeko
+x[c(TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE)]
+#beste modu bat
+#x[c(T,T,T,T,F,F,F,F,F,F)]
+```
+
+Hau da, `TRUE` eta `FALSE` bidez sortutako bektore baten bidez, `TRUE` elementuen posizioan dauden elementuak bueltatzen digu. Hau hasiera batean zaila izan daiteke ulertzeko, baina ez ahaztu nahi diren probak egin ditzazkegula hobeto ulertzeko eta esperimentuak egiteko, azken finean horrela ikasten baita.
+
+### Bektoreen elementuak aukeratzen iragazkien bidez
+
+Aurreko bi puntuak ikusita, oraingo honetan, bektoreei iragazki desberdinak nola jarri ikasiko dugu. Demagun berriro ere aurreko `x` bektorea dugula eta 0 baino handiagoak diren elementuak erakustea nahi ditugula. Horretarako, hurrengoa egin beharko dugu:
+
+
+```{r}
+#x bektorea definitu
+x <- c(-1,1,5,2,-4,6,-2,3,1,10)
+
+#0 baino handiagoak diren elementuak erakutsi
+x[x > 0]
+```
+
+Konturatzen baldin bagara, aurreko bi propietateak konbinatuz lortu dugu:
+
+
+```{r}
+x > 0
+x[x > 0]
+```
+
+Aurreko kasuan ikusi dugun bezala, berriro ere bi baldintza jarriko ditugu:
+
+$$\mbox{0 baino handiagoa izatea eta 10 baino txikiagoa.}$$
+
+
+```{r}
+x[(x > 0) & (x < 10)]
+```
+
+##  `1 == TRUE` eta `0 == FALSE`
+
+`R`-n, beste lengoaia batzutan bezala, 1 balioa `TRUE` balioaren *baliokidea* da zentzu batzutan eta 0 balioa `FALSE` balioarena, ikus dezagun hurrengo berdintzaren bidez
+
+
+```{r}
+1 == TRUE
+
+0 == FALSE
+```
+
+Propietate hori, bektoreetan ere aplika dezakegu:
+
+
+```{r}
+c(2,0,1,4,-1,5,10) == TRUE
+
+c(2,0,1,4,-1,5,10) == FALSE
+```
+
+## `which` funtzioa
+`which` funtzioa bektoreekin eta eragile logikoekin loturik dago eta bektoreko elementu jakinen posizioa bueltatzen du:
+
+
+```{r}
+#'x' bektorea definitu
+x <- c(1,1,5,2,4,7,2,3,1,12)
+
+#Zein posiziotan aurkitzen da 1 elementua 'x' bektorean?
+which(x == 1)
+
+#Zein posiziotan aurkitzen dira 5 baino handiagoak diren elementuak 'x' bektorean?
+which(x > 5)
+
+#Zein posiziotan aurkitzen dira zenbaki bikoitiak 'x' bektorean?
+which((x %% 2) == 0)
+```
+
+### Ariketak:
+Hurrengo kode blokean `x` aldagaia definitzen da, ez da aldaketarik egin behar:
+
+
+```{r}
+#Hurrengo lerroan, 'x' aldagaia definitzen da.
+set.seed(5)
+x <- sample(25, replace = T)
+```
+
+Ariketa hemendik aurrera hasten da:
+
+
+```{r}
+#Kalkulatu 'x' aldagaiaren luzeera
+
+
+#Adierazi 'x' bektorean 20 balioa baino handiago duten elementuak
+
+
+#Adierazi 'x' bektorean 20 balioa baino handiago duten elementuen POSIZIOA
+
+
+#Kalkulatu 'x' bektorean zenbat elementuk duten 6 balioa
+
+
+```
+
+# Erabilitako funtzio berriak:
+ - `which`

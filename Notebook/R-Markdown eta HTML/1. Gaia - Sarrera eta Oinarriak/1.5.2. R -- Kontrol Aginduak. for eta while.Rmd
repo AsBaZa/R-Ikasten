@@ -1,0 +1,234 @@
+<p align="center">
+<img src="Images/Rlogo.png"/>
+</p>
+
+Koaderno honetan, programazioko beste oinarrizko atal bat ikusiko dugu: **Kontrol Aginduena**. 
+
+# R-n Lehen Pausuak: kontrol aginduak
+Oraingoan, `for` eta `while` kontrol aginduak ikusiko ditugu, bukleak ('loop' ingelesez) sortzeko oso erabilgarriak direnak.
+
+## `for`
+
+Kontrol agindu honek, orokorrean bektoreen eta listen bidez funtzionatzen du. Bektore edo listako elementuak hartzen ditu banan-banan eta nahi ditugun ekintzak egin. Egitura honakoa da:
+
+```
+for (aldagaia in lista){
+    ekintza edo ekintzak
+}
+```
+
+Ikus dezagun adibide ezberdinen bidez
+
+
+```{r}
+#Hurrengo kasuan, i aldagaiaren balioak bektoreko balioak izango dira: 1,2,3,4,5,6,7,8,9,10
+for (i in 1:10){
+    print(i)
+}
+```
+
+
+```{r}
+#Hurrengo kasuan, i aldagaiaren balioak bektoreko balioak izango dira
+for (i in c(20,5,6,2,10000,1e+30)){
+    print(i)
+}
+```
+
+
+```{r}
+#Hurrengo kasuan, i aldagaiaren balioak bektoreko balioak izango dira
+for (i in c("K","A","I","X","O")){
+    print(i)
+}
+```
+
+Goazen `for`-en erabilera batzuk aztertzera. Demagun bektore bateko elementuen batura egitea nahi dugula. Aurreko koaderno baten ikusi den bezala, horretarako `sum` funtzioa dugu. Hala ere, suposatuko dugu funtzio hori ez dela existitzen eta guk eraikitzea nahi dugula. Horretarako, aukera egoki bat `for` erabiltzea izango zen, bektoreko elementu guztietatik pasatzen delako. Ikus dezagun eragiketa hori egiteko aukera bat:
+
+
+```{r}
+#Guk batzea nahi ditugun elementuak 'bektorea'-n gordeko ditugu:
+bektorea <- c(1:1000)
+
+#'batura' aldagaia definituko dugu eta bertan elementu guztien batura gordetzen joango gara
+batura <- 0
+
+for (i in bektorea){
+    #Hurengo lerroan, batura aldagaian bektoreko elementu bakoitza batzen joango gara
+    batura <- batura + i
+}
+
+#Amaitzeko, emaitza printatuko dugu:
+print(batura)
+```
+
+Kasu honetan emaitza ondo dagoen edo ez frogatzeko aukera desberdinak ditugu, hasteko `sum` funtzioa erabili dezakegu:
+
+
+```{r}
+sum(bektorea)
+```
+
+Kasu honetan, erabilitako segida, [progresio aritmetiko](https://eu.wikipedia.org/wiki/Progresio_aritmetiko) bat denez, [Carl Friedrich Gauss](https://eu.wikipedia.org/wiki/Carl_Friedrich_Gauss) matematikariak emandako formularen bidez kalkula dezakegu:
+$$\dfrac{a_1+a_n}{2}\cdot n = \dfrac{1+1000}{2}\cdot 1000=500.5\cdot 1000=500500$$
+Beraz, frogatutzat ematen dugu `for` bidez lortutako emaitza zuzena dela.
+
+Gauzak zerbait konplikatzeko, suposa dezagun oraingo honetan 2018. urteko astegun kopurua neurtzea nahi dugula (astelehen kopurua, astearte kopurua...). 2018. urtea astelehen baten hasi zela jakinik, hurrengo funtzioa erabiliko dugu urteko egutegia sortzeko:
+
+ - `rep_len`
+ 
+Funtzio horrek (`rep_len` = repeat_length), nahi dugun bektorea errepikatzen digu nahi dugun luzeera lortu arte, kasu honetan, errepikatzea nahi dugun bektorea (1,2,3,4,5,6,7) eta urteak dituen egun kopurua, 365.
+
+
+```{r}
+rep_len(1:7, 365)
+```
+
+Beraz, helburua astegun bakoitzeko zenbat egun dauden kalkulatzea da `for` bidez:
+
+
+```{r}
+#Lehenik eta behin 'egutegia' aldagaia definituko dugu
+egutegia <- rep_len(1:7, 365)
+
+#eta ondoren astegunen aldagaiak hasiarazi
+astelehen <- 0
+astearte <- 0
+asteazken <- 0
+ostegun <- 0
+ostiral <- 0
+larunbat <- 0
+igande <- 0
+
+#Orain, 'for' buklea sortuko dugu kontaketarako
+for (i in egutegia){
+    if (i == 1){
+        astelehen <- astelehen + 1
+    } else if (i == 2){
+        astearte <- astearte + 1
+    } else if (i == 3){
+        asteazken <- asteazken +1
+    } else if (i == 4){
+        ostegun <- ostegun + 1
+    } else if (i == 5){
+        ostiral <- ostiral + 1
+    } else if (i == 6){
+        larunbat <- larunbat + 1
+    } else{
+        igande <- igande + 1
+    }
+}
+
+#Azkenik, emaitzak printatuko ditugu
+print("Astelehen kopurua:")
+print(astelehen)
+print("Astearte kopurua:")
+print(astearte)
+print("Asteazken kopurua:")
+print(asteazken)
+print("Ostegun kopurua:")
+print(ostegun)
+print("Ostiral kopurua:")
+print(ostiral)
+print("Larunbat kopurua:")
+print(larunbat)
+print("Igande kopurua:")
+print(igande)
+```
+
+Lortutako emaitzekin atera daitekeen ondorioa, 2018. urteak 52 aste oso dituela eta astelehen batean hasi eta amaitzen dela.
+
+ - **Oharra:** *`for` erabiltzerakoan, `i` aldagaia erabiltzen da kasu orokorretarako, baina erabiltzaileak nahi dion izena eman diezaioke, baldin eta kontuz ibiltzen baldin bada `for`-eko aldagaia kanpoko aldagai batekin ez nahasten (kasu horretan aldagaiaren balioa aldatuko zuelako).*
+
+
+```{r}
+for (beste_aldagai_bat in 1:10){
+    print(beste_aldagai_bat)
+}
+```
+
+
+```{r}
+adibide <- 1000
+for (adibide in 1:10){
+    i <- adibide
+}
+
+#Konturatu 'adibide' aldagaiean 'for'-eko azken balioa geratzen dela gordeta
+print(adibide)
+```
+
+## `while`
+Hasieran esan bezala, `for` eta `while` bukleak sortzeko erabiltzen diren kontrol aginduak dira, baina era desberdin baten funtzionatzen dute. `for`-en kasuan, ikusi dugun bezala iterazio kopurua zehaztuta dago, aurrez jakin dezakegu, lista edo bektorearen luzeera hain zuzen ere:
+
+```
+for (i in 1:10){
+    print(i)
+}
+```
+
+Aurreko kasuan adibidez, badakigu 10 iterazio egongo direla, `1:10` bektorearen luzeera 10 delako. `while`-n kasuan aldiz, hori ezin dezakegu beti jakin eta batzutan bukle infinituak sortzeko arriskua ere egoten da. `while`-n egitura honako hau da:
+
+```
+while (baldinza edo baldintzak){
+    ekintza edo ekintzak
+}
+```
+
+Hau da, `if`-en antzera baldintza baten arabera funtzionatzen dute: parentesi barruko baldintza betetzen den bitartean, `{}` arteko ekintzak behin eta berriro errepikatuko dira. 
+
+Ikus dezagun hurrengo adibidea:
+
+
+```{r}
+#'a' aldagaiari 0 balioa emango diogu
+a <- 0
+
+#'a' 1000 baino txikiagoa den bitartean, 'a' 7 zenbakiarekin batuko dugu, handitzen joateko
+while (a < 1000){
+    a <- a + 7
+}
+
+print(a)
+```
+
+Konturatzen baldin bagara, 1000 zenbakia baino handiagoa den 7ren multiplorik txikiena lortu dugu (1001 zenbakia).
+
+Sarritan, behar den iterazio kopurua aurrez jakin daitekeenean, `while` eta `for`-en bidez helburu berdina lor dezakegu:
+
+
+```{r}
+#for
+batura <- 0
+for (i in c(1:1000)){
+    batura <- batura + i
+}
+print(batura)
+
+
+#while
+batura <- 0
+i <- 1
+while(i <= 1000){
+    batura <- batura + i
+    i <- i + 1
+}
+print(batura)
+```
+
+Orokorrean, `while` erabilgarriagoa da iterazio kopurua ezezaguna denean
+
+### Ariketak:
+
+
+```{r}
+#Kalkulatu 'for' bidez lehenengo 15 zenbakien arteko biderkadura (1*2*3*...*15)
+
+
+#Kalkulatu 'while' bidez lehenengo 15 zenbakien arteko biderkadura (1*2*3*...*15)
+
+
+```
+
+# Erabilitako funtzio berriak:
+ - `rep_len`

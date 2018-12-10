@@ -1,0 +1,158 @@
+<p align="center">
+    <img src="Images/Rlogo.png"/>
+</p>
+
+Notebook honetan, programazioko beste oinarrizko atal bat ikusiko dugu: **aldagaiena**. Aldagaietan, programazio lengoaiak eskaintzen dituen objektu desberdinak gorde daitezke, besteak beste:
+ - Zenbakiak
+ - Karaktere-kateak
+ - Aldagai-logikoak
+ 
+# R-n Lehen Pausuak: Aldagaiak
+## Aldagai Numerikoak
+
+Hasteko, aldagaietan zenbakiak gordetzen hasiko gara. Hurrengo lerroan, `x` aldagaiari 10 balioa esleituko diogu.
+
+Horretarako, `<-` erabiliko dugu:
+
+
+```{r}
+x <- 10
+```
+
+Aurreko lerroa exekutatu baldin badugu, `x` aldagaiak 10 balioa izango du gordeta bere baitan. Beraz, `x` exekutatzen baldin badugu, gordeta daukan balioa erakutsiko digu, hau da, kasu honetan 10 balioa.
+$$x=10$$
+
+
+```{r}
+x
+```
+
+`R`-n, gure saioan gordeta ditugun aldagaiak ikusteko `ls()` funtzioa dago:
+
+
+```{r}
+ls()
+```
+
+Aldagaiak, balioak gordetzeaz gain eragiketa ezberdinak egiteko balio dute. Defini ditzagun hurrengo bi aldagaiak:
+ - `amak_emandako_dirua`
+ - `aitak_emandako_dirua`
+ 
+Non lehenengoaren balioa 20 den eta bigarrenarena 12. Gure helburua gurasoengandik jasotako diru kopuru totala baldin bada, bien arteko batura egin beharko dugu, hau da:
+ - `amak_emandako_dirua + aitak_emandako_dirua`
+
+eta noski, espero den emaitza 32 izango da.
+
+
+```{r}
+amak_emandako_dirua <- 20
+aitak_emandako_dirua <- 12
+
+amak_emandako_dirua + aitak_emandako_dirua
+```
+
+Demagun, diru kopuru hori astero jasotzen dugula eta urte amaieran gurasoengandik jaso dugun diru kopurua kalkulatzea nahi dugula. Urteak 52 aste dituela suposatzen badugu, urte betean jasotako diru kantitate totala hurrengoa izango da:
+
+$$52\cdot \mbox{(amak_emandako_dirua + aitak_emandako_dirua)}$$
+
+$$52\cdot \mbox{(20 + 12)}$$
+
+
+```{r}
+52 * (amak_emandako_dirua + aitak_emandako_dirua)
+```
+
+**Oharra:** *Aldagaiei izenak ematerako orduan arau batzuk bete behar dira, besteak beste ezin dira **hutsuneak** erabili aldagaien izenentzako ezta **karaktere bereziak** ere ez* (`*`,`/`,`+`,`-`,`(`,`)`,`\`...).
+
+
+```{r}
+amak_emandako_dirua <- 20
+```
+
+
+```{r error=TRUE}
+karaktere*berezia <- 20
+```
+
+## Karaktere-kate aldagaiak
+Beste aldagai-mota estandar bat, karaktere-kateena da. `R`-n karaktere-kateak sartzerako orduan bi era daude, `''` komatxo sinple bidez edo `""` komatxo bikoitzen bidez:
+
+
+```{r}
+komatxo_sinpleak <- 'Adibidea'
+komatxo_bikoitzak <- "Adibidea"
+
+komatxo_sinpleak
+komatxo_bikoitzak
+```
+
+## Aldagai Logikoak (Aldagai Boolearrak)
+Beste aldagai-mota estandar bat, aldagai logikoena da. Aldagai logikoek, bi aukera dute:
+ - `TRUE` (edo `T`)
+ - `FALSE` (edo `F`)
+ 
+eta sarritan kodea idazterako orduan oso erabilgarriak izaten dira, kasu binario baten aurrean baldin bagaude:
+
+ - Zabalik/Itxita
+ - Bai/Ez
+ - Jarraitu/Gelditu
+ - ...
+ 
+Kasu horietan, bi aukera posible bakarrik egon behar dira, edo bata edo bestea betetzen da, ezin da beste aukerarik egon aldagai logikoen kasuan. 
+
+
+```{r}
+true_aldagaia <- TRUE
+true_aldagaia2 <- T
+false_aldagaia <- FALSE
+false_aldagaia2 <- F
+
+true_aldagaia
+true_aldagaia2
+false_aldagaia
+false_aldagaia2
+```
+
+## Azken nota batzuk
+`R`-n, beste programazio-lengoaia batzuetan ez bezala (`C`-n adibidez), ez dugu derrigorrez aldagaian sartzen dugun aldagai-mota zehaztu behar, programak berak zehazten du automatikoki. Hau da, `x` aldagaian zenbaki bat sartzea nahi baldin badugu, ez dago zehaztu beharrik aldagai-mota edo klasea.
+
+
+```{r}
+x <- 1
+y <- "Bat"
+z <- TRUE
+
+class(x)
+class(y)
+class(z)
+```
+
+Hortaz gain, `R`-n  `#` karakterearen ondoren datorrena ez da exekutatzen, ondoren ikus daitekeen bezala:
+
+
+```{r}
+1 + 1 #Orain idazten dena ez da exekutatzen
+```
+
+Bestalde, normalean komando bakoitza lerro ezberdin batean exekutatzea gomendatzen den arren, nahi izanez gero, `;` ikurra erabili dezakegu operazio bat baino gehiago egiteko lerro berean.
+
+
+```{r}
+1 + 1; 2 + 3; x <- 10; x
+```
+
+### Ariketak:
+
+
+```{r}
+#Gorde 'egoera' aldagaian 'Ikasten' karaktere-katea
+
+
+#Gorde 'x' aldagaian 2^10 zenbakia
+
+
+```
+
+# Erabilitako funtzio berriak:
+ - `ls`
+ - `class`

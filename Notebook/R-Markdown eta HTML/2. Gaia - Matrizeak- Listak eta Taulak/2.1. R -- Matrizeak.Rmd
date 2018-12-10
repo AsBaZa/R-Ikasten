@@ -1,0 +1,551 @@
+<p align="center">
+<img src="Images/Rlogo.png"/>
+</p>
+
+# Matrizeak
+Lehenengo zatia ulertzea eta amaitzea lortu baldin badugu, oinarrizko kontzeptuak barneratzea lortu dugu, bide onetik goaz. 2. atal honetan gauza konplexuagoekin arituko gara, `R`-ren objektu eta aukera desberdinak aztertzen. Atal honi hasiera emateko, [**matrizeak**](https://eu.wikipedia.org/wiki/Matrize) aztertuko ditugu. Matrizeak, *2 dimentsioko* bektore bezala kontsidera daitezke. Garrantzia berezia dute matematika eta informatika munduan besteak beste, eta era desberdinetakoak izan daitezkeen arren gure kasuan **zenbakizko matrizeetan** zentratuko gara.
+
+$$
+M =
+  \begin{bmatrix}
+    1 & 3 & 5 \\
+    2 & 4 & 6 
+  \end{bmatrix} =
+  \begin{bmatrix}
+    m_{11} & m_{12} & m_{13} \\
+    m_{21} & m_{22} & m_{23} 
+  \end{bmatrix}
+$$
+
+**Oharra:** *Koaderno honetan matrizeen inguruko puntu batzuk azalduko dira, baina ikaslearen esku geratuko da matrizeen inguruko oinarrizko propietateak eta eragiketak ezagutzea.*
+
+Hasteko beraz, sor dezagun goiko $M$ matrizea `matrix` funtzioaren bitartez
+
+
+```{r}
+M <- matrix(c(1,2,3,4,5,6), nrow = 2, ncol = 3)
+
+print(M)
+```
+
+Gogoratu $M$ matrizea $2\times3$-ko matrize bat dela, ondorioz `matrix` funtzioan hori zehaztu dugu, bektore bat hartu eta matrize bilakatu dugu adierazitako errenkada (`nrow`) eta zutabeekin (`ncol`):
+
+$$
+c(1,2,3,4,5,6)\Longrightarrow
+  \begin{bmatrix}
+    1 & 3 & 5 \\
+    2 & 4 & 6 
+  \end{bmatrix}
+$$
+
+Hala ere, konturatzen baldin bagara, `matrix` funtzioan informazio bat soberan dugu, bektorearen luzeera jakin ezkero `nrow` edo `ncol` bietako bat jakitzearekin nahiko delako:
+
+ - `nrow` zehazten den momentuan `ncol` finkatuta geratzen da
+ - `ncol` zehazten den momentuan `nrow` finkatuta geratzen da
+
+
+```{r}
+M <- matrix(1:6, nrow = 2)
+
+print(M)
+```
+
+
+```{r}
+M <- matrix(1:6, ncol = 3)
+
+print(M)
+```
+
+Konturatuko ginen bezala, `matrix`-ek bektorea zutabeka betetzen du, hau da, lehendabizi zutabe bat betezen du bektoreko elementuekin eta betetakoan hurrengo zutabera egiten du salto. Hori aldatzea nahi izanez gero, `byrow = TRUE` (errenkadaka) parametroa ezarri beharko da:
+
+$$
+c(1,2,3,4,5,6)\Longrightarrow
+  \begin{bmatrix}
+    1 & 2 & 3 \\
+    4 & 5 & 6 
+  \end{bmatrix}
+$$
+
+
+```{r}
+M <- matrix(1:6, ncol = 3, byrow = TRUE)
+
+print(M)
+```
+
+Espero daitekeen bezala, bektorearen eta sortzea nahi den matrizearen tamaina ez badira bateragarriak, `R`-k `Warning` mezu bat jaurtiko digu. Hala ere, matrizea sortuko du bektoreko elementuak **birziklatuz** matrizea bete arte.
+
+
+```{r}
+M <- matrix(1:7, ncol = 3, byrow = TRUE)
+
+print(M)
+```
+
+Era berean, matrizeak sor ditzakegu bektore desberdinak konbinatuz `c()` funtzioaren bidez:
+
+
+```{r}
+bat <- c(1,1,1,1)
+bi <- c(2,2,2,2)
+hiru <- c(3,3,3,3)
+
+M <- matrix(c(bat,bi,hiru), ncol = 4, byrow = TRUE)
+
+print(M)
+```
+
+Bestalde, matrize baten tamaina jakitea nahi baldin bada, besteak beste hurrengo hiru funtzioak erabili daitezke:
+ - `dim`: tamaina jakitzeko (bi zenbakiko bektore bat itzuliko du)
+ - `nrow`: errenkada kopurua itzuliko du
+ - `ncol`: zutabe kopurua itzuliko du
+
+
+```{r}
+dim(M)
+
+nrow(M)
+
+ncol(M)
+```
+
+## Elementuak aukeratzen 
+Matrizeen elementuak aukeratzeko forma nahiko intuitiboa da, `[,]` bidez egiten da, nahi den errenkada eta zutabea aukeratuz
+
+$$M =
+  \begin{bmatrix}
+    1 & 3 & 5 \\
+    2 & 4 & 6 
+  \end{bmatrix} =
+  \begin{bmatrix}
+    m_{11} & m_{12} & m_{13} \\
+    m_{21} & m_{22} & m_{23} 
+  \end{bmatrix}$$
+
+
+```{r}
+M <- matrix(1:6, nrow = 2)
+
+print(M)
+```
+
+ - $m_{11}$ elementua aukeratzen
+
+
+```{r}
+M[1,1]
+```
+
+ - $m_{13}$ elementua aukeratzen
+
+
+```{r}
+M[1,3]
+```
+
+ - 1. zutabea aukeratzen
+
+
+```{r}
+M[,1]
+```
+
+ - 1 . eta 3 . zutabeak aukeratzen
+
+
+```{r}
+M[,c(1,3)]
+```
+
+ - 2  . errenkada aukeratzen
+
+
+```{r}
+M[2,]
+```
+
+## Matrizeen arteko eragiketak
+Azpi-atal honetan matrizeen arteko oinarrizko eragiketa batzuk ikusiko ditugu. Kontutan hartu, orokorrean `R`-k **elementuz elementuko** eragiketak egiten dituela.
+
+ - **Batuketa**
+  - Marko teorikoan, bi matrize batzeko biak tamainu berekoak izan behar dira
+  
+$$
+M + N =
+  \begin{bmatrix}
+    1 & 3 & 5 \\
+    2 & 4 & 6 
+  \end{bmatrix} +
+  \begin{bmatrix}
+    1 & 1 & 1 \\
+    2 & 2 & 2 
+  \end{bmatrix} =
+  \begin{bmatrix}
+    2 & 4 & 6 \\
+    4 & 6 & 8 
+  \end{bmatrix}
+$$
+
+
+```{r}
+M <- matrix(1:6, nrow = 2)
+N <- matrix(c(1,1,1,2,2,2), nrow = 2, byrow = TRUE)
+
+print(M + N)
+```
+
+Baina bektoreetan bezala, matrizeetan ere **BIRZIKLAPEN** araua betetzen da.
+
+$$
+M + 1 =
+  \begin{bmatrix}
+    1 & 3 & 5 \\
+    2 & 4 & 6 
+  \end{bmatrix} +
+  1 :=
+  \begin{bmatrix}
+    2 & 4 & 6 \\
+    3 & 5 & 7 
+  \end{bmatrix}
+$$
+
+
+```{r}
+print(M + 1)
+```
+
+Matrize eta bektoreen arteko batuketa, era estandarrean zutabe bidez egiten du, birziklapen araua aplikatuz:
+
+$$
+  \begin{bmatrix}
+    1 & 3 & 5 \\
+    2 & 4 & 6 
+  \end{bmatrix} +
+  c(1,2,3)
+  \Longrightarrow
+  c(1,2,3,4,5,6)+c(1,2,3)=c(2,4,6,5,7,9)\Longrightarrow
+  \begin{bmatrix}
+    2 & 6 & 7 \\
+    4 & 5 & 9 
+  \end{bmatrix}
+$$
+
+
+
+```{r}
+print(M + c(1,2,3))
+```
+
+Zutabe bidez egin beharrean, errenkadaka egitea nahi izanez gero, aukera erraz bat `sweep` funtzioa erabiltzea da. Funtzioan hurrengo elementuak sartzen dira:
+ - 1 . elementua: Matrizea
+ - 2 . elementua: Eragiketa egiteko forma ('1' zutabeka, '2' errenkadaka)
+ - 3 . elementua: bektorea
+ - 4 . elementua: Egin nahi den eragiketa (batuketa, kenketa, biderketa...)
+
+
+```{r}
+print(  sweep(M, 2, c(1,2,3), "+")  )
+```
+
+ - **Kenketa, zatiketa, biderketa, berreketa**
+  - Aurrerago esan bezalala, `R`-n era estandarrean **elementuz elementu** egiten dira eragiketak eta **birziklapen araua** betetzen da.
+  
+$$
+M * N =
+  \begin{bmatrix}
+    1 & 3 & 5 \\
+    2 & 4 & 6 
+  \end{bmatrix} *
+  \begin{bmatrix}
+    1 & 1 & 1 \\
+    2 & 2 & 2 
+  \end{bmatrix} :=
+  \begin{bmatrix}
+    1 & 3 & 5 \\
+    4 & 8 & 12 
+  \end{bmatrix}
+$$
+
+
+```{r}
+M <- matrix(1:6, nrow = 2)
+N <- matrix(c(1,1,1,2,2,2), nrow = 2, byrow = TRUE)
+
+print(M * N)
+```
+
+$$
+M\ /\ N =
+  \begin{bmatrix}
+    1 & 3 & 5 \\
+    2 & 4 & 6 
+  \end{bmatrix} /
+  \begin{bmatrix}
+    1 & 1 & 1 \\
+    2 & 2 & 2 
+  \end{bmatrix} :=
+  \begin{bmatrix}
+    1 & 3 & 5 \\
+    1 & 2 & 3 
+  \end{bmatrix}
+$$
+
+
+```{r}
+M <- matrix(1:6, nrow = 2)
+N <- matrix(c(1,1,1,2,2,2), nrow = 2, byrow = TRUE)
+
+print(M / N)
+```
+
+$$
+M^2 =
+  \begin{bmatrix}
+    1 & 3 & 5 \\
+    2 & 4 & 6 
+  \end{bmatrix}^2 :=
+  \begin{bmatrix}
+    1 & 9 & 25 \\
+    4 & 16 & 36 
+  \end{bmatrix}
+$$
+
+
+```{r}
+M <- matrix(1:6, nrow = 2)
+
+print(M^2)
+```
+
+## Matrize biderketa
+Matrizeen arteko biderketa egitea nahi baldin bada `%*%` erabili behar da `R`-n.
+
+$$
+M \cdot N =
+  \begin{bmatrix}
+    1 & 3 & 5 \\
+    2 & 4 & 6 
+  \end{bmatrix}  \cdot
+  \begin{bmatrix}
+    1 & 1 \\
+    2 & 2 \\
+    3 & 3
+  \end{bmatrix}  =
+  \begin{bmatrix}
+    22 & 22 \\
+    28 & 28 
+  \end{bmatrix}
+$$
+
+**Oharra:** *Gogoratu matrizeen arteko biderketa egiteko matrizeen tamainak egokiak izan behar direla, hau da, $M$ eta $N$ matrizeen tamainak $m_1\times m_2$ eta $n_1\times n_2$ badira hurrenez hurren, biderketa matriziala egiteko hurrengoa bete behar da:*
+
+$$m_2 = n_1$$
+
+*baldintza hori betetzen ez baldin bada, errore bat jaurtiko digu. Adibideko kasuan $m_2 = n_1 = 3$ denez ez dago arazorik eta lortzen den emaitzaren tamaina $m_1\times n_2$ da (Adibideko emaitzaren tamaina $2\times2$).*
+
+
+```{r}
+M <- matrix(1:6, nrow = 2)
+N <- matrix(1:3, nrow =3, ncol = 2) #Matrize hau birziklapen bidez sortzen du
+
+print(M %*% N)
+```
+
+
+```{r error=TRUE}
+#Hurrengoak errorea emango digu ez delako aipatutako baldintza betetzen
+print(M %*% M)
+```
+
+### Matrize potentziak
+Matrize potentziak kalkulatzea nahi baldin badira
+$$M^5=M\cdot M\cdot M\cdot M\cdot M$$
+biderketa matrizialaren antzera `%^%` erabili behar da. Kasu honetan ordea, hori erabiltzeko lehendabizi `expm` paketea instalatu beharko da `install.packages("expm")`.
+
+**Oharra:** *Paketeak instalatzeko orduan Jupyter-ek arazoak eman ditzake, hala bada, `R`-n bertan instalatzea gomendatzen da. Instalatzeko, hurrengo lerroko `#` karakterea ezabatu. Koaderno hau **Binder** bidez jarraitzen dabilenak ez du ezer instalatzerik behar.*
+
+
+```{r}
+#install.packages("expm")
+```
+
+eta behin instalatutakoan paketea kargatu beharko da:
+
+
+```{r}
+library(expm)
+```
+
+Behin instalatuta eta kargatuta dugularik `expm` paketea, erabiltzeko prest gaude. Kontutan izan potentziak aplikatzeko matrizeak ***karratuak*** izan behar direla.
+
+
+```{r}
+M <- matrix(c(22,28), nrow = 2, ncol = 2)
+M %^% 5
+```
+
+**Nota**: *`expm` paketearen bidez, matrize-eragiketa desberdinak egiteko aukera ematen digu: matrize erro karratua, matrize logaritmoa... *
+
+*Informazio gehiago: [expm Manual](https://cran.r-project.org/web/packages/expm/expm.pdf)*
+
+## Matrizeko elementuak batzen: zutabeka eta errenkadaka
+Matrizeen arteko eragiketak ikusi ondoren, matrizeen barneko eragiketetan sartuko gara pare bat gauza ikusteko: matrizeen elementuen batuketa.
+
+Matrize bateko elementu guztien batuketa kalkulatzea nahi baldin badugu, iada ezaguna den `sum` funtzioa erabili dezakegu:
+
+
+```{r}
+M <- matrix(1:6, nrow = 2)
+sum(M)
+```
+
+Gure helburua errenkada edo zutabeko elementuen batura kalkulatzea baldin bada berriz, `for` baten bidez egin dezakegu:
+
+ - Errenkadaka
+
+
+```{r}
+for (i in 1:nrow(M)){
+    print(sum(M[i,]))
+}
+```
+
+ - Zutabeka
+
+
+```{r}
+for (i in 1:ncol(M)){
+    print(sum(M[,i]))
+} 
+```
+
+Hala ere, beste modu efizienteago bat gauza berdina egiteko, `rowSums` eta `colSums` funtzioak erabiltzea da, emaitza bektore forman itzultzen digularik.
+
+
+```{r}
+rowSums(M)
+
+colSums(M)
+```
+
+## Errenkadak/Zutabeak gehitzen
+Aurrean dugun problemaren arabera, batzuetan matrizeari errenkada edo/eta zutabeak gehitzea beharko da, baita bi matrize elkartzea ere. Kasu horietarako bi funtzio daude bereziki `rbind` eta `cbind` (errenkadak eta zutabeak gehitzeko hurrenez hurren). Ikus ditzagun hurrengo adibideak:
+
+
+```{r}
+M <- matrix(1:6, nrow = 2)
+
+print(rbind(M, M))
+```
+
+
+```{r}
+print(cbind(M, M))
+```
+
+Funtzio horiek errorerik ez emateko, lotzen diren matrizeak/bektoreak errenkada kopuru berdina izan beharko dute `rbind` erabiltzeko eta zutabe kopuru berdina `cbind` erabiltzeko. Hala ere, matrize--bektore lotzean **birziklapen araua** eman daiteke.
+
+
+```{r}
+print(cbind(M,1))
+```
+
+## Matrizeen errenkada eta zutabeei izenak ematen
+Matrizeen zutabeei eta errenkadaei izenak atxikitzeko forma bat ikusiko dugu:
+
+ - Errenkadentzako (`rownames`)
+
+
+```{r}
+M <- matrix(1:6, nrow = 2)
+
+rownames(M) <- c("E1","E2")
+
+print(M)
+```
+
+ - Zutabeentzako (`colnames`)
+
+
+```{r}
+colnames(M) <- c("Z1","Z2","Z3")
+
+print(M)
+```
+
+Behin zutabeen eta errenkaden izenak definiturik ditugula, nahi dugun elementuari deitzeko erabil dezakegu:
+
+
+```{r}
+print(M["E1",])
+```
+
+
+```{r}
+print(M["E2","Z3"])
+```
+
+## Matrizeen inguruko funtzio gehiago
+Koaderno honen helburua matrizeen inguruko sarrera bat ematea denez, ez da gehiegi sakontzerik nahi matrizeekin. Hala ere, interesaturik dagoen irakurlearentzat, hurrengo link honetan matrizeen inguruko funtzio gehiago aurki daitezke:
+
+ - [Quick-R: Matrix Algebra](https://www.statmethods.net/advstats/matrix.html)
+
+## Ariketak:
+Sortu hurrengo bi matrizeak eta egin ondorengo ariketak:
+
+$$A =
+  \begin{bmatrix}
+    1 & 2 & 3 & 4 \\
+    1 & 1 & 1 & 1 \\
+    10 & 9 & 8 & 7
+  \end{bmatrix} =
+  \begin{bmatrix}
+    a_{11} & a_{12} & a_{13} & a_{14} \\
+    a_{21} & a_{22} & a_{23} & a_{24} \\
+    a_{31} & a_{32} & a_{33} & a_{34}
+  \end{bmatrix}$$
+
+$$B =
+  \begin{bmatrix}
+    1 & 3 \\
+    5 & 7 \\
+    9 & 11 \\
+    13 & 15
+  \end{bmatrix} =
+  \begin{bmatrix}
+    b_{11} & b_{12} \\
+    b_{21} & b_{22} \\
+    b_{31} & b_{32} \\
+    b_{41} & b_{42}
+  \end{bmatrix}$$
+
+
+```{r}
+#Sortu 'A' matrizea
+
+
+#Sortu 'B' matrizea
+
+
+#Kalkulatu 'A'-ren 3. errenkada eta 'B'-ren 1. zutabearen arteko batuketa
+#Batuketa hori elementuz elementu egin behar da
+
+
+#Kalkulatu A*B biderketa MATRIZIALA
+
+
+```
+
+# Erabilitako funtzio berriak:
+ - `matrix`
+ - `dim`
+ - `nrow`
+ - `ncol`
+ - `sweep`
+ - `rowSums`
+ - `colSums`
+ - `rbind`
+ - `cbind`
+ - `rownames`
+ - `colnames`

@@ -1,0 +1,274 @@
+<p align="center">
+<img src="Images/Rlogo.png"/>
+</p>
+
+Koaderno honetan, programazioko beste oinarrizko atal bat ikusiko dugu: **Kontrol Aginduena**. 
+# R-n Lehen Pausuak: kontrol aginduak
+Kontrol aginduak konputazioaren funtsa dira. Konputazioaren helburu nagusienetako bat, lan errepikakorrak egitea da behin eta berriro. Adibide bezala, demagun lehen 10.000 zenbakiak marraztea nahi ditugula, pertsona gehientsuenentzat, lan hori ez da lan zail bat, baina bai errepikakorra eta denbora dexente behar duena (hala ere, beti dago aspertuta dagoen pertsonaren bat eta lehen 100.000 zenbakiak kontatzen grabatzen duenik ere [Bideoa](https://www.youtube.com/watch?v=xWcldHxHFpo))
+
+Horrelako lanetarako hain zuzen ere oso aproposak eta eraginkorrak dira ordenagailuak. Ikus dezagun zenbat denbora behar duen gure ordenagailuak lehen 1.000 zenbakiak marrazteko.
+
+
+```{r}
+1:1000
+```
+
+Demagun orain $2^{100}$ kalkulatzea nahi dugula. Pertsona arrunt batek denbora asko beharko luke kalkulu hori egiteko (beste askok inoiz ere ez dugu lortuko egitea), baina gaur egungo ordenagailuek segundu bat baino gutxiago behar dute.
+
+
+```{r}
+2^100
+```
+
+Hala ere, gehienetan kalkulu eta prozesu konplexuagoak edota gure beharren araberakoak egitea beharko dugu eta hor sartzen dira jokoan **kontrol aginduak**
+
+## `if` eta `else`
+`if` eta `else` kontrol aginduak orain arte ikusitako gehiena bezala, ia edozein programazio-lengoaiatan aurki daiteke. Ingelesezko hitzak dira:
+
+$$if \equiv baldin$$
+$$else \equiv bestela$$
+
+Has gaitezen lehenengoarekin
+
+### `if`
+
+`if`-ek duen egitura honelako da:
+
+```
+if (baldintza edo baldintzak){
+    ekintza edo ekintzak
+}
+```
+
+Ikus dezagun hurrengo bi adibideen bitartez
+
+
+```{r}
+#'a' aldagaiari 1 balioa esleituko diogu
+a <- 1
+
+#6 > 5 betetzen bada (TRUE baldin bada), orduan { } giltzen tartean dagoena egingo du
+#Kasu honetan betetzen da, beraz giltzen barnekoa egiten du
+if (6 > 5){
+    a <- 2
+}
+
+a
+```
+
+
+```{r}
+#'a' aldagaiari 1 balioa esleituko diogu
+a <- 1
+
+#6 < 5 betetzen bada (TRUE baldin bada), orduan { } giltzen tartean dagoena egingo du
+#Kasu honetan ez da betetzen, beraz ez du giltzen barnekoa egiten
+if (6 < 5){
+    a <- 2
+}
+
+a
+```
+
+Konturatzen baldin bagara, lehenengo kasuan, `a`-ren hasierako balioa aldatu egin da `if`-en parentesi barneko baldintza egia zelako (TRUE) eta bigarren kasuan aldiz parentesi barneko baldintza betetzen ez zenez, ez da `a`-ren hasierako balioa aldatu. Goazen orain beste adibide zailago batekin:
+
+
+```{r}
+#'eguna' aldagaiari 1 eta 7 zenbakien arteko balio bat esleituko diogu
+#Aldatu balioa nahi izanez gero
+eguna <- 5
+
+
+if (eguna == 1){
+    print("Astelehena")
+}
+if (eguna == 2){
+    print("Asteartea")
+}
+if (eguna == 3){
+    print("Asteazkena")
+}
+if (eguna == 4){
+    print("Osteguna")
+}
+if (eguna == 5){
+    print("Ostirala")
+}
+if (eguna == 6){
+    print("Larunbata")
+}
+if (eguna == 7){
+    print("Igandea")
+}
+```
+
+Azken kasu honetan, 7 baldintza ezberdin ditugu eta horietako bat betetzen baldin bada, asteko egun bat itzuliko du.
+
+### `else`
+
+`else`-ren egitura honako hau da:
+
+
+```
+if (baldintza edo baldintzak){
+    ekintza edo ekintzak
+} else{
+    ekintza edo ekintzak
+}
+```
+
+**Oharra**: *`else`-k **BETI** behar du `if` bat izatea bere aurretik, bestela errore bat emango digu. Hurrengo kode lerroa exekutatzen badugu adibidez, errore bat emango digu*
+
+
+```{r error=TRUE}
+else{
+    a <- 5
+}
+```
+
+Hurrengo blokeak ere errorea emango digu (`else` ez dagoelako era egokian idatzirik):
+
+
+```{r error=TRUE}
+#Gorde 'a' aldagaian nahi den zenbaki oso bat
+a <- 11
+
+if (a %% 2){
+    print("Gure aldagaia bikoitia da")
+}
+else{
+    print("Gure aldagaia bakoitia da")
+}
+```
+
+Esan bezala, ondo idazteko era egokia hurrengoa da:
+
+
+```{r}
+#Gorde 'a' aldagaian nahi den zenbaki oso bat
+a <- 11
+
+#'a' 2-rekin zatitzean, hondarra 0 baldin bada, hau da, bikoitia bada
+if ((a %% 2) == 0){
+    "Gure aldagaia bikoitia da"
+} else{ 
+    "Gure aldagaia bakoitia da"
+}
+```
+
+Azken kode blokean, `a` aldagaiari zenbaki oso bat esleitu ondoren, zenbaki hori bikoitia den edo ez aztertzen dugu:
+
+                                    (a %% 2) == 0
+                            
+Gogoratu `%%` eragiketa modulua kalkulatzeko erabiltzen dela, hau da, zatiketa egin ondoren geratzen den hondarra kalkulatzeko (ondorioz, zenbaki bakoitien hondarra 1 izango da eta bikoitiena 0).
+
+Baldintza hori betetzen bada, `Gure aldagaia bikoitia da` printatzen du eta bestela, `Gure aldagaia bakoitia da`.
+
+`if` eta `else` sinpleetarako, `ifelse` funtzioa existitzen da. Funtzio honen forma honakoa da:
+
+`ifelse(baldintza, ekintzak1, ekintzak2)`
+
+`ekintzak1` baldintza betetzen denean burutzen da eta `ekintzak2` baldintza betetzen ez denean. Aurreko adibidea honela idatz genezake:
+
+
+```{r}
+a <- 11
+
+ifelse((a %% 2) == 0, "Gure aldagaia bikoitia da", "Gure aldagaia bakoitia da")
+```
+
+Bi moduetara idatzita ondo dago eta nahi dena aukeratu daiteke, gustuaren arabera.
+
+## `else if`
+Koaderno honi amaiera emateko, `else if` ikusiko dugu, honen bidez aurreko bi aukerak konbinatzeko aukera ematen digu. Egitura, `else`-ren antzekoa da:
+
+```
+if (baldintza edo baldintzak){
+    ekintza edo ekintzak
+} else if (baldintza edo baldintzak){
+    ekintza edo ekintzak
+}
+```
+
+`else if` honela ere uler daiteke `else + if`, hau da, lehendabizi `else` aplikatzen zaio eta ondoren beste `if` baldintza bat. Hurrengo adibidea aztertuko dugu:
+
+
+```{r}
+#'a' aldagaiari zenbaki bat esleituko diogu:
+#Probatu hurrengo balioekin probak egiteko: 6, 7, 33
+a <- 33
+
+if ((a %% 2) == 0){
+    "Gure aldagaia bikoitia da"
+}else if ((a %% 3) == 0){
+    "Gure aldagaia ez da bikoitia, baina bai 3aren multiploa"
+}
+```
+
+Aurreko blokean `a` aldagaiari 6, 7 eta 33 balioak jarriz gero hurrengo emaitzak jasoko dira hurrenez hurren:
+
+ - `Gure aldagaia bikoitia da` (Kasu honetan, 6 bikoitia eta 3aren multiploa da, baina lehen baldintza bete denez hurrengo lerroan `else`-rengatik ez du hurrengo lerroa printatuko)
+ - `_` (Kasu honetan, 7 zenbakia ez denez ez bikoitia ezta 3aren multiploa ere ez, ez da ezer ere ez printatu)
+ - `Gure aldagaia ez da bikoitia, baina bai 3aren multiploa` (33aren kasuan, lehenengo baldintza ez denez bete, bigarren baldintzara joaten da eta bigarren baldintza betetzen denez, bigarren mezua printatzen du)
+ 
+Egin dezagun orain ariketa berdina, baina kasu honetan, `else if` erabili beharrean `if` bakarrik erabiliz eta azter ditzagun desberdintasunak.
+
+
+
+```{r}
+#'a' aldagaiari zenbaki bat esleituko diogu:
+#Probatu hurrengo balioekin probak egiteko: 6, 7, 33
+a <- 6
+
+if ((a %% 2) == 0){
+    "Gure aldagaia bikoitia da"
+}
+if ((a %% 3) == 0){
+    "Gure aldagaia 3aren multiploa da"
+}
+```
+
+Azken adibide honetan, aldaketa garrantzitsuena 6 zenbakiarekin ematen da. Kasu honetan, **BI** mezuak printatzen ditu: `Gure aldagaia bikoitia da` eta `Gure aldagaia 3aren multiploa da`. Hain zuzen ere `else if`-en ordez `if` jartzeak hori egiten du, bi baldintzak aldi berean gertatzeko aukera eman.
+
+Hasieran, asteko egunekin aurkeztu da adibide bat `if`-ak erabiliz. Hala ere, urteko egun bakoitza asteko egun bakar bati dagokio (ez da egongo aldi berean astelehena eta asteartea den egunik), ondorioz hori idazteko era egokiagoa `else if` bidez izango zen
+
+
+```{r}
+#'eguna' aldagaiari 1 eta 7 zenbakien arteko balio bat esleituko diogu
+#Aldatu balioa nahi izanez gero
+eguna <- 5
+
+
+if (eguna == 1){
+    print("Astelehena")
+} else if (eguna == 2){
+    print("Asteartea")
+} else if (eguna == 3){
+    print("Asteazkena")
+} else if (eguna == 4){
+    print("Osteguna")
+} else if (eguna == 5){
+    print("Ostirala")
+} else if (eguna == 6){
+    print("Larunbata")
+} else if (eguna == 7){
+    print("Igandea")
+}
+```
+
+ - **Nota garrantzitsua:** *Orain idatzitako modu hau egokiagoa eta optimoagoa da eta arrazoia hurrengoa da. Demagun `eguna <- 1` ezarri dugula. `else if`-ak erabili ditugun kasuan `R`-k baldintza bakarra aztertu behar du, hau da, `eguna == 1` baldintza. Behin baldintza hori betetzen dela ikusita `else`-engatik ez ditu aztertuko beste baldintzak. Lehenengo kasuan aldiz, `if`-en kasuan, `R`-k 7 baldintzak aztertzen ditu nahiz eta beharrezkoak ez izan. *
+
+### Ariketak:
+
+
+```{r}
+#Demagun 'x' aldagai bat dugula eta hurrengo if-else egitura sortu nahi dela:
+# - 'x'-en luzeera bikoitia bada 'sum(x)' egitea nahi da
+# - 'x'-en luzeera bakoitia bada 'prod(x)' egitea nahi da
+# - 'x'-en luzeera 0 baldin bada 'print("Bektorearen luzeera 0 da")' egitea nahi da
+
+
+```
+
+# Erabilitako funtzio berriak:
+ - `ifelse`

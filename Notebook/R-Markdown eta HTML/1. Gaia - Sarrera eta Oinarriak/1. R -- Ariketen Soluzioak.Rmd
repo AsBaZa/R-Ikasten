@@ -1,0 +1,251 @@
+<p align="center">
+<img src="Images/Rlogo.png"/>
+</p>
+
+# R-n Lehen Pausuak: Ariketen Soluzioak
+
+
+## 1.1 Sarrera
+
+
+```{r}
+#Idatzi lerro honen azpian lehenengo eragiketa:
+
+(5 + 3) * 10^2
+#Idatzi lerro honen azpian bigarren eragiketa:
+
+(5 + 5)^(5 + 2)
+```
+
+## 1.2 Aldagaiak
+
+
+```{r}
+#Gorde 'egoera' aldagaian 'Ikasten' karaktere-katea
+
+egoera <- "Ikasten"
+#Gorde 'x' aldagaian 2^10 zenbakia
+
+x <- 2^10
+```
+
+## 1.3 Bektoreak
+
+
+```{r}
+#Gorde 'x' aldagaian (1,5,9,13,17,21,25,29,33,37,41,45) bektorea
+
+x <- seq(from = 1, to = 45, by = 4)
+#Kalkulatu 'x' bektoreko elementuen batura
+
+sum(x)
+#Kalkulatu 'x' bektorearen luzeera (elementu kopurua)
+
+length(x)
+#Aukeratu 'x' bektoreko 4. eta 7. elementuak
+
+x[c(4,7)]
+```
+
+## 1.4 Eragile Logikoak
+
+
+```{r}
+#Hurrengo lerroan, 'x' aldagaia definitzen da.
+set.seed(5)
+x <- sample(25, replace = T)
+
+#Kalkulatu 'x' aldagaiaren luzeera
+
+length(x)
+#Adierazi 'x' bektorean 20 balioa baino handiago duten elementuak
+
+x[x > 20]
+#Adierazi 'x' bektorean 20 balioa baino handiago duten elementuen POSIZIOA
+
+which(x > 20)
+#Kalkulatu 'x' bektorean zenbat elementuk duten 6 balioa
+
+length(x[x == 6])
+```
+
+## 1.5.1 Kontrol Aginduak. if eta else
+
+
+```{r}
+#Demagun 'x' aldagai bat dugula eta hurrengo if-else egitura sortu nahi dela:
+# - 'x'-en luzeera bikoitia bada 'sum(x)' egitea nahi da
+# - 'x'-en luzeera bakoitia bada 'prod(x)' egitea nahi da
+# - 'x'-en luzeera 0 baldin bada 'print("Bektorearen luzeera 0 da")' egitea nahi da
+
+luzeera <- length(x)
+if (luzeera == 0){
+    print("Bektorearen luzeera 0 da")
+} else if ((luzeera %% 2) == 0){
+    sum(x)
+} else{
+    prod(x)
+}
+```
+
+## 1.5.2 Kontrol Aginduak. for eta while
+
+
+```{r}
+#Kalkulatu 'for' bidez lehenengo 15 zenbakien arteko biderkadura (1*2*3*...*15)
+
+x <- 1
+for (i in 1:15){
+    x <- x * i
+}
+#Kalkulatu 'while' bidez lehenengo 15 zenbakien arteko biderkadura (1*2*3*...*15)
+
+x <- 1
+i <- 0
+while (i < 15){
+    i <- i + 1
+    x <- x * i
+}
+```
+
+## 1. Ariketa
+Ariketa honetan, bi aldagai definitzea eskatuko da. Alde batetik `egutegia` aldagaia definituko dugu. `egutegia` aldagaiak 365 elementu izan behar ditu, hain zuzen ere 1 zenbakitik hasita 365 zenbakirarte dauden zenbaki oso guztiak. 
+
+Bestalde, `egutegi_berria` sortzea eskatzen da, `egutegia` aldagaiaren antzekoa da, baina kasu honetan, *larunbatek*, hau da,
+$$6,13,20,27,34...$$
+elementuek -1 balioa izango dute eta *igandeek*, hau da,
+$$7,14,21,28,35...$$
+elementuek -2 balioa izango dute. Beste era batean esanda, `egutegi_berria` aldagaiak honako itxura izan beharko du:
+
+$$1,2,3,4,5,-1,-2,8,9,10,11,12,-1,-2,15,16...$$
+
+
+```{r}
+################
+###1. ARIKETA###
+################
+
+#Sortu 'egutegia' aldagaia
+
+egutegia <- 1:365
+
+#Sortu 'egutegi_berria' aldagaia
+
+egutegi_berria <- egutegia
+egutegi_berria[(egutegia %% 7) == 6] <- -1
+egutegi_berria[(egutegia %% 7) == 0] <- -2
+```
+
+## 2. Ariketa
+Kalkulatu hurrengo batuketa:
+$$\sum_{n=0}^{100} \dfrac{1}{n!}=\dfrac{1}{0!}+\dfrac{1}{1!}+\dfrac{1}{2!}+\dfrac{1}{3!}+...+\dfrac{1}{100!}$$
+non
+$$n! = n\cdot(n-1)\cdot(n-2)\cdot...\cdot3\cdot2\cdot1$$
+adibide bezala,
+$$4!=4\cdot3\cdot2\cdot1=24$$
+
+$$6!=6\cdot5\cdot4\cdot3\cdot2\cdot1=720$$
+Eragiketa horri, [faktoriala](https://eu.wikipedia.org/wiki/Faktorial) deitzen zaio eta `R`-n funtzio bat existitzen da horretarako: `factorial()`
+
+Hurrengo lerroan ikus daiteke nola erabiltzen den:
+
+
+```{r}
+factorial(4)
+factorial(6)
+```
+
+Hori jakinik, sortu `batura` aldagaia eta gorde bertan batuketaren emaitza:
+$$\sum_{n=0}^{100} \dfrac{1}{n!}=\dfrac{1}{0!}+\dfrac{1}{1!}+\dfrac{1}{2!}+\dfrac{1}{3!}+...+\dfrac{1}{100!}$$
+
+
+```{r}
+################
+###2. ARIKETA###
+################
+
+batura <- 0
+for (i in 0:100){
+    batura <- batura + (1 / factorial(i))
+}
+```
+
+## 3. Ariketa
+Ariketa honetarako zenbakizko bektore bat emango zaigu, `bektorea` aldagaian gordeta. Egin beharrekoa hurrengoa da:
+ - Zenbat elementuk dute 19.2 balioa `bektorea` aldagaian? Gorde emaitza `zenbat` aldagaian.
+ - Bektoreko zenbatgarren posizioan dago lehenengo 10.4 balioko elementua? Gorde emaitza `posizioa` aldagaian.
+
+
+```{r}
+################
+###3. ARIKETA###
+################
+
+###############################################
+#Aldagaia definitzen, EZ ALDATU EZER ERE EZ!!!#
+###############################################
+bektorea <- mtcars$mpg
+
+####################################
+#Hemendik aurrera hasten da ariketa#
+####################################
+zenbat <- length(bektorea[bektorea == 19.2])
+posizioa <- which(bektorea == 10.4)[1]
+```
+
+## 4. Ariketa
+Sortu `fibonacci` aldagaia eta gorde bertan [Fibonacci-ren lehen 30 zenbakiak](https://eu.wikipedia.org/wiki/Fibonacciren_zenbakiak). Fibonacci-ren zenbakiak honako zenbaki segida dira:
+
+$$0,1,1,2,3,5,8,13,21,34...$$
+hau da, segidako hurrengo zenbakia, aurreko bien batura da:
+
+$$1=1+0$$
+$$2 = 1+1$$
+$$3=2+1$$
+$$5=3+2$$
+$$8=5+3$$
+$$13=8+5$$
+$$...$$
+Ondorioz, segidako hurrengo zenbakia 55 izango zen (34 + 21).
+
+
+```{r}
+################
+###4. ARIKETA###
+################
+
+fibonacci <- 0:29
+for (i in 3:30){
+    fibonacci[i] <- fibonacci[i - 1] + fibonacci[i - 2]
+}
+```
+
+## 5. Ariketa
+`zenbakiak` bektorean, 0 eta 1 tartean dauden 1.000.000 elementu gorde dira. Bektore horretako zenbat elementu behar dira (elementuak bektorean dauden ordenan harturik) horien arteko batura 1000 edo 1000 baino handiagoa izateko?
+
+$$a_1+a_2+a_3+...+a_n \geq 1000$$ 
+
+$$\mbox{ Zein da }n\mbox{ horren balioa?}$$
+
+*Gorde emaitza `kopurua` aldagaian.*
+
+Zenbat da elementu horien arteko batura totala?
+
+*Gorde emaitza `batura` aldagaian.*
+
+
+```{r}
+################
+###5. ARIKETA###
+################
+
+set.seed(5)
+zenbakiak <- runif(1e+6,0,1)
+
+batura <- 0
+kopurua <- 0
+while(batura < 1000){
+    kopurua <- kopurua + 1
+    batura <- batura + zenbakiak[kopurua]
+}
+```

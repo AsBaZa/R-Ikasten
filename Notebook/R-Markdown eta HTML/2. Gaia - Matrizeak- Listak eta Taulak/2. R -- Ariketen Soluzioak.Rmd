@@ -1,0 +1,134 @@
+<p align="center">
+<img src="Images/Rlogo.png"/>
+</p>
+
+# 2. Gaia: Ariketen Soluzioak
+
+
+## 2.1 Matrizeak
+
+
+```{r}
+#Sortu 'A' matrizea
+
+A <- matrix(c(1:4,rep(1,4),10:7), nrow = 3, byrow = T)
+#Sortu 'B' matrizea
+
+B <- matrix(seq(1,15,2), nrow = 4, byrow = T)
+#Kalkulatu 'A'-ren 3. errenkada eta 'B'-ren 1. zutabearen arteko batuketa
+#Batuketa hori elementuz elementu egin behar da
+
+A[3,] + B[,1]
+#Kalkulatu A*B biderketa MATRIZIALA
+
+A %*% B
+```
+
+## 2.2 Data Frame
+
+
+```{r}
+df <- airquality
+```
+
+
+```{r}
+#Kalkulatu taularen DIMENTSIOAK (elementu kopurua eta aldagai kopurua)
+
+dim(df)
+#Egin taularen LABURPEN (summary) taula bat datuen nondik norakoa ezagutzeko
+
+summary(df)
+```
+
+
+```{r}
+#Zenbat egunetan izan ziren 80ºF baino gehiago?
+
+sum(df$Temp > 80)
+#TRUE/FALSE bektore baten, 'sum' funtzioak TRUE-ak kontatzen ditu
+#izan ere, TRUE=1 eta FALSE=0 bezala kontsideratzen ditu.
+
+#Beste aukera bat:
+nrow(df[df$Temp > 80,])
+```
+
+
+```{r}
+#Sortu 'Temp_Celsius' aldagai berria 'Temp' aldagaia ºC-tan gordetzen duena
+
+df$Temp_Celsius <- (df$Temp - 32) / 1.8
+```
+
+## 2.3 Data Table
+
+
+```{r}
+library(data.table)
+DT <- data.table(airquality)
+```
+
+
+```{r}
+#Kalkulatu taularen DIMENTSIOAK (elementu kopurua eta aldagai kopurua)
+
+dim(DT)
+#Egin taularen LABURPEN (summary) taula bat datuen nondik norakoa ezagutzeko
+
+summary(DT)
+```
+
+
+```{r}
+#Zenbat egunetan izan ziren 80ºF baino gehiago?
+
+sum(DT$Temp > 80)
+#TRUE/FALSE bektore baten, 'sum' funtzioak TRUE-ak kontatzen ditu
+#izan ere, TRUE=1 eta FALSE=0 bezala kontsideratzen ditu.
+
+#Beste aukera bat:
+nrow(DT[Temp > 80,])
+```
+
+
+```{r}
+#Sortu 'Temp_Celsius' aldagai berria 'Temp' aldagaia ºC-tan gordetzen duena
+
+DT[,Temp_Celsius := (Temp - 32) / 1.8]
+```
+
+## 2.4 Listak
+
+
+```{r}
+#Sortu 'zerrenda' lista
+
+zerrenda <- list(Bektorea = seq(0,30,5), Data_Frame = mtcars, Letrak = LETTERS)
+```
+
+
+```{r}
+#Aukeratu 'zerrenda'-ko 1. elementua
+
+zerrenda$Bektorea
+#Sortu 1. elementuarekin azpi-lista bat
+
+zerrenda["Bektorea"]
+```
+
+
+```{r}
+#Aukeratu 'zerrenda'-ko 2. elementuaren 3. zutabea
+#(zutabearen izena 'disp' da)
+
+#Aukera desberdinak daude, besteak beste:
+zerrenda$Data_Frame[[3]] 
+zerrenda$Data_Frame$disp
+```
+
+
+```{r}
+#Aukeratu 'zerrenda'-ko 3. elementuaren 13. elementua
+
+zerrenda[[3]][13]
+```

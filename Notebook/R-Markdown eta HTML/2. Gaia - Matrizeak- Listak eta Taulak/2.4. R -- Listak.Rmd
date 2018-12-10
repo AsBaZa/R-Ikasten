@@ -1,0 +1,349 @@
+<p align="center">
+<img src="Images/Rlogo.png"/>
+</p>
+
+# Listak
+Listak, bektore generiko bat bezala uler daitezke eta `list` funtzioaren bidez sortzen dira. Kasu honetan, listako elementuak **edozein motatako objektuak** izan daitezke (listen barruan beste lista batzuk ere sar daitezke).
+
+`list` funtzioa `c()` funtzioa baino dezente moldagarriagoa da, aukera gehiago eskaintzen dituelako. Hala ere, ikusiko dugun bezala bi funtzio horiek ez dira baztergarriak, hau da, biak konbinatu daitezke aurrerago ikusiko den bezala.
+
+Has gaitezen lehen lista sortzen:
+
+
+```{r}
+x <- list(1,TRUE,"Lista")
+print(x)
+```
+
+Ikus daitekeen bezala, listen itxura eta ikusitako bektoreena desberdina da. Listetako elementuek ***beraien ezaugarriak mantentzen*** dituzte (aurrerago ikusiko da xehetasun gehiagorekin).
+
+Listako elementuei deitzeko modu desberdinak daude, baina hurrengo biekin hasiko gara: `[]` eta `[[]]`.
+
+ - `[[]]` bidez, ***elementua bera*** lortzen da.
+ - `[]` bidez, ***aukeratutako elementuen azpi-lista bat*** sortzen da.
+
+
+```{r}
+print(x[[1]])
+print(class(x[[1]]))
+
+print("#############")
+
+print(x[1])
+print(class(x[1]))
+```
+
+## Azpi-listak sortzen
+Ikusi berri den bezala azpi-listak sortzeko `[]` erabiltzen da, aukeratzea nahi ditugun elementuak zehaztuz.
+
+Hurrengo adibidean, lista bat sortuko dugu eta ondoren 3. elementua aukeratuko dugu alde batetik eta 2. eta 4. elementua beste alde batetik
+
+
+```{r}
+#Lista sortuko dugu
+x <- list(2,"Kaixo",FALSE,3.14)
+
+#'x'-ren azpi-lista sortzen 3. elementuarekin
+print(x[3])
+```
+
+
+```{r}
+#'x'-ren azpi-lista sortzen 2. eta 4. elementuekin
+print(x[c(2,4)])
+```
+
+Bektoreen inguruko koadernoan agertzen den bezala, kasu honetan ere kanpoan uztea nahi diren elementuak zehaztu daitezke:
+
+
+```{r}
+#'x'-ren azpi-lista sortzen 4. elementua kanpoan utziz
+print(x[-4])
+```
+
+
+```{r}
+#'x'-ren azpi-lista sortzen 1. eta 3. elementuak kanpoan utziz
+print(x[-c(1,3)])
+```
+
+## Listako elementuak aukeratzen
+Azpi-listak aukeratu beharrean, listako elementu bat aukeratzea nahi izanez gero `[[]]` erabiliko dugu aurrerago esan bezala.
+
+
+```{r}
+#Lista sortuko dugu
+x <- list(2,"Kaixo",FALSE,3.14)
+
+#'x'-ren 3. elementua aukeratzen
+print(x[[3]])
+
+#'x'-ren 1. elementua aukeratzen
+print(x[[1]])
+```
+
+Esan bezala, `list`-en kasuan elementu bakoitzak bere klasea mantentzen du:
+
+ - 1. elementua: zenbakizkoa (`numeric`)
+ - 2. elementua: karaktere-katea (`character`)
+ - 3. elementua: logizkoa (`logical`)
+ - 4. elementua: zenbakizkoa (`numeric`)
+
+
+```{r}
+print(class(x[[1]]))
+print(class(x[[2]]))
+print(class(x[[3]]))
+print(class(x[[4]]))
+```
+
+**Oharra:** *Listak `for` kontrol aginduetan erabiltzerakoan `[[]]` agindua erabiltzen du elementuak banan-banan aukeratzen joateko*
+
+
+```{r}
+#Hurrengo bi 'for' kontrol aginduek funtsean gauza bera egiten dute
+for (i in x){
+    print(i)
+}
+
+print("##################")
+
+for (i in 1:4){
+    print(x[[i]])
+}
+```
+
+## Listako elementuei izenak ematen
+Bektoreekin bezala, listako elementuei ere izenak emateko aukera dago, elementu bakoitza izen baten bidez identifikatzeko, ingelesez *key - value* bezala ezagutzen dena. Bi aukera nagusi daude:
+
+ - **Hasieran definituz**
+
+
+```{r}
+x <- list(lehenengoa = 10, bigarrena = TRUE, hirugarrena = "Hiru")
+print(x)
+```
+
+ - **`names` funtzioaren bidez**
+
+
+```{r}
+x <- list(10,TRUE,"Hiru")
+names(x) <- c("lehenengoa","bigarrena","hirugarrena")
+print(x)
+```
+
+**Oharra:** *Izenak **BETI** izango dira karaktere-kate erakoak, nahiz eta zenbakiak edo/eta beste aldagai bat erabili.*
+
+### Elementuak aukeratzen izenen bidez
+Izenak erabiltzearen helburua, elementuak izenen bidez identifikatzea eta deitzea izaten da. Horretarako, aurreko bi erak erabili daitezke: `[]` eta `[[]]`
+
+
+```{r}
+#1. elementuaren azpi-lista sortzeko
+a <- x["lehenengoa"]
+print(a)
+```
+
+
+```{r}
+#2. eta 3. elementuen azpi-lista sortzeko
+a <- x[c("lehenengoa","bigarrena")]
+print(a)
+```
+
+
+```{r}
+#1. elementua aukeratzeko
+a <- x[["lehenengoa"]]
+print(a)
+```
+
+Beste aukera bat, `$` ikurraren bidez da (`[[]]`-ren baliokidea) eta era honetan erabiltzen da.
+
+
+```{r}
+x$lehenengoa
+```
+
+
+```{r}
+x$bigarrena
+```
+
+**Oharra:** *Izenak definitzerakoan hutsuneren bat edo karaktere bereziren bat erabili baldin badugu, `$` metodoaren bidez arazoak izan ditzakegu, ondorioz kasu horietarako ```  erabili beharko da*
+
+
+```{r}
+x <- list("bat zero" = 10, "1" = TRUE, "3 zenbakia" = "Hiru")
+
+x$`bat zero`
+x$`1`
+x$`3 zenbakia`
+```
+
+### Lista konplexuagoak sortzen
+Hasieran esan bezala, listetan edozein objektu mota sar dezakegu, beraz oraingo honetan objektu konplexuago batzuk sartuko ditugu:
+
+ - Bektore bat
+ - Matrize bat
+ - Funtzio bat
+ - Lista bat
+ 
+*(Azpi-atal honek aurrekoek baino zailtasun handiagoa du. Hartu behar den denbora listak ulertzeko eta proba desberdinak egiteko, oinarrizko kontzeptuak ulertu direla ziurtatzeko)*
+
+
+```{r}
+konplexu <- list(bektore = c(1:10), 
+                 matrize = matrix(c(1,2,3, 11,12,13), nrow = 2, ncol = 3),
+                 funtzio = sum,
+                 lista = list(1,5,TRUE,c(1:5)))
+```
+
+Behin `konplexu` lista sortu dugula edozein elementu aukera dezakegu lehen ikusi ditugun metodoekin.
+
+ - **Bektorea:**
+  
+$$\mbox{konplexu[[1]]}\Longleftrightarrow c(1:10)$$
+
+
+```{r}
+#Bektorea erakusteko modu ezberdinak:
+konplexu[[1]]
+
+konplexu[["bektore"]]
+
+konplexu$bektore
+```
+
+
+```{r}
+#Bektoreko lehenengo elementua hartzen
+konplexu[[1]][1]
+
+#Bektoreko azken 3 elementuak hartzen
+konplexu[[1]][c(8:10)]
+
+#Bektoreko azken 5 zenbakiak ezabatzen
+konplexu[[1]][-c(6:10)]
+
+#Bektoreko elementuak 1 elementuarekin batzen
+konplexu[[1]] + 1
+```
+
+ - **Matrizea**
+ 
+$$\mbox{konplexu[[2]]}\Longleftrightarrow 
+\begin{bmatrix}
+    1 & 3 & 12\\
+    2 & 11 & 13
+\end{bmatrix}$$
+
+
+```{r}
+#Matrizeko 1. errenkada aukeratzen
+konplexu[[2]][1,]
+
+#Matrizeko 1. errenkadako eta 2. zutabeko elementua aukeratzen
+konplexu[[2]][1,2]
+
+#Matrizeko elementuak batzen
+sum(konplexu[[2]])
+```
+
+ - **Funtzioa**
+ 
+$$\mbox{konplexu[[3]]}\Longleftrightarrow \mbox{sum}$$
+
+
+```{r}
+#Bektore baten elementuen batura
+konplexu[[3]](c(1:100))
+
+#Listako matrizeko elementuak batzen
+konplexu[[3]](konplexu[[2]])
+```
+
+ - **Lista**
+ 
+$$\mbox{konplexu[[4]]}\Longleftrightarrow\mbox{list(1,5,TRUE,c(1:5)))}$$
+
+
+```{r}
+#Lista horretako 2. elementua aukeratzen
+konplexu[[4]][[2]]
+
+#Lista horretako azpi-lista sortzen 1. eta 3. elementuekin
+print(konplexu[[4]][c(1,3)])
+
+#Lista horretako bektorearen 4. elementua aukeratzen
+konplexu[[4]][[4]][4]
+```
+
+Aurreko adibidean ikus daitekeen bezala, nahi bezain lista konplexuak eraiki daitezke eta edozein motatako objektuekin.
+
+## Listak konbinatzen
+Amaitzeko, koaderno honen hasieran esandako ikusiko dugu: `c()` eta `list` funtzioen konbinazioa. Gogora dezagun, `c()` funtzioa *combine* funtzioa dela, hau da, elementuak konbinatzen dituen funtzioa. Ondorioz, bi lista konbinatzeko ere erabili daiteke.
+
+
+```{r}
+x <- list(2,"Kaixo",FALSE,3.14)
+y <- list(1,TRUE,"Lista")
+
+print(c(x, y))
+```
+
+**Nota:** *Data Frame-ak eta Listak ikusi ondoren, elementuei eta aldagaiei deitzeko era eta egitura nahiko antzerakoa dela azter daiteke. Izan ere Data Frame-ak lista karratu bezala kontsidera daitezke, hau da, Data Frame bat lista bat da non elementu guztiek luzeera berdina duten.*
+
+## Ariketak:
+Sortu `zerrenda` lista bat hurrengo elementuekin (eta ordena berean):
+
+ - `(0,5,10,15,20,25,30)` bektorea
+ - `mtcars` Data Frame-a
+ - `LETTERS` bektorea
+ 
+Kontutan izan `mtcars` eta `LETTERS` aldagaiak definiturik daudela. Bestalde, hurrengo IZENAK esleitu `zerrenda` listako elementuei:
+
+ - `Bektorea`
+ - `Data_Frame`
+ - `Letrak`
+
+
+```{r}
+LETTERS
+```
+
+
+```{r}
+#Sortu 'zerrenda' lista
+
+
+```
+
+
+```{r}
+#Aukeratu 'zerrenda'-ko 1. elementua
+
+
+#Sortu 1. elementuarekin azpi-lista bat
+
+
+```
+
+
+```{r}
+#Aukeratu 'zerrenda'-ko 2. elementuaren 3. zutabea
+#(zutabearen izena 'disp' da, nahi izanez gero)
+
+
+```
+
+
+```{r}
+#Aukeratu 'zerrenda'-ko 3. elementuaren 13. elementua
+
+
+```
+
+# Erabilitako funtzio berriak:
+ - `list`
