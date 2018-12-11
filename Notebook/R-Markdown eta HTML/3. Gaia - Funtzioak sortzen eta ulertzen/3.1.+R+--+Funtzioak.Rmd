@@ -1,0 +1,265 @@
+<p align="center">
+<img src="Images/Rlogo.png"/>
+</p>
+
+# Funtzioak sortzen
+
+Atal honetan, funtzioak sortzen hasiko gara. Funtzioak, nahi bezain sinpleak zein konplexuak izan daitezke eta nahi beste agindu edo/eta ekintza sar daitezke. `R`-n honako itxura izaten dute:
+
+```
+funtzioaren_izena <- function(aldagaia/aldagaiak){
+    ekintza edo ekintzak
+    return(objektua)
+}
+```
+
+Hasteko, funtzio erraz bat sortuko dugu, batuketarena:
+
+
+```{r}
+batuketa <- function(x,y){
+    return(x + y)
+}
+```
+
+Aurreko kodea exekutatzen baldin bada, `R`-k ez duela inongo baliorik jaurtitzen aztertu daiteke, aurreko kodean **funtzioa definitu** delako bakarrik. Definitu duguna hurrengo da: funtzioan bi balio sartzean, `x` eta `y`-ren lekuan, bien arteko batura itzuliko du.
+
+Jar dezagun martxan funtzioa, proba ezberdinak eginez
+
+
+```{r}
+batuketa(10,5)
+
+batuketa(2,90)
+```
+
+Ikus daitekeen bezala, funtzioan `x` eta `y`-ren partez zenbakiak ezarri ezkero bien arteko batuketa egiten du:
+
+\begin{equation}
+    x = 10, y = 5\\
+    \Downarrow\\
+    10 + 5\\
+    \Downarrow\\
+    15
+\end{equation}
+
+Funtzioak itzultzen duen balioa ere aldagai bezala gorde daiteke.
+
+
+```{r}
+a <- batuketa(10,5)
+```
+
+
+```{r}
+a
+```
+
+Defini dezagun orain lehen atalean egindako ariketa bat, zenbakia bakoitia edo bikoitia den edo ez zehazten duena:
+
+
+```{r}
+bakoiti_bikoiti <- function(x){
+    if (x %% 2 == 0){
+        "Sartutako balioa BIKOITIA da"
+    }
+    else{
+        "Sartutako balioa BAKOITIA da"
+    }
+}
+```
+
+
+```{r}
+bakoiti_bikoiti(100)
+bakoiti_bikoiti(505)
+```
+
+Azken funtzio horretan bi **ohar garrantzitsu** daude. Alde batetik, funtzioak ez du `return`-ik eta bestetik `else` ez da `}` ikurraren atzean ezarrita agertzen.
+
+## `return`
+
+Funtzioen barruan, `return`-en bidez ***funtzioa amaitzen da eta barruko elementua itzuli***. Hala ere, ez da derrigorrezkoa `return` egotea. Kasu horietan, funtzioko ***azken balioa*** itzultzen da (`bakoiti_bikoiti`-n ikusten den bezala). Gomendio orokorra `return` erabiltzea da, horrela espresuki zehazten delako non amaitu eta itzultzea nahi den elementua. Beraz, hurrengo bi funtzioek adibidez gauza berdina egiten dute:
+
+
+```{r}
+bakoiti_bikoiti <- function(x){
+    if (x %% 2 == 0){
+        "Sartutako balioa BIKOITIA da"
+    }
+    else{
+        "Sartutako balioa BAKOITIA da"
+    }
+}
+
+bakoiti_bikoiti_return <- function(x){
+    if (x %% 2 == 0){
+        return("Sartutako balioa BIKOITIA da")
+    }
+    else{
+        return("Sartutako balioa BAKOITIA da")
+    }
+}
+```
+
+## `else` funtzioetan
+
+Aurreko adibidean ikus daitekeen bezala, funtzioen barruan `else` ez da derrigorrez `}` ikurraren atzean joan behar. `{r}`-ko funtzioetan, funtzioaren barneko kode guztia ***era global batean irakurtzen da*** hasieratik bukaeraraino. Lerroz lerro exekutatzerakoan aldiz, `if` bat exekutatzerakoan, jarraian ez baldin badu `else` bat errorea ematen du (aurreko `if` *ahazten* duela esan daiteke), `R` ez delako gai aurretik gertatu dena jakitzeko.
+
+
+```{r error=TRUE}
+if (5 %% 2 == 0){
+    return("Sartutako balioa BIKOITIA da")
+}
+else{
+    return("Sartutako balioa BAKOITIA da")
+}
+```
+
+
+```{r}
+if (5 %% 2 == 0){
+    return("Sartutako balioa BIKOITIA da")
+} else{
+    return("Sartutako balioa BAKOITIA da")
+}
+```
+
+## Funtzioko aldagaiei balioak esleitzen
+
+Funtzioetan, definitzen diren aldagaietan balio bat esleitu daiteke, hurrengo adibidean ikusten den bezala. Horren bidez, aldagaiari balio bat aurrefinkatzen zaio eta kontrakoa esaten ez den bitartean, aldagai horren balioa hori izango da. `eragiketa` funtzioan, `batu` aldagaiak `TRUE` balioa aurrefinkatuta dauka eta kasu horretan, egiten den eragiketa **batuketa** da. `FALSE` balioa esleitzen baldin bazaio aldiz, **kenketa** egiten da. Azter dezagun:
+
+
+```{r}
+eragiketa <- function(x, y, batu = TRUE){
+    if (batu == TRUE){
+        return(x + y)
+    }
+    if (batu == FALSE){
+        return(x - y)
+    }
+}
+```
+
+
+```{r}
+#Funtzioan, 3 aldagai definitu diren arren, ez dira denak erabili behar derrigorrez.
+#Bestalde, 'batu' aldagaiak berez 'TRUE' balioa gordetzen du
+eragiketa(5,5)
+
+#'batu' aldagaiaren balioa aldatzen baldin bada, kenketa egingo du
+eragiketa(5,5,FALSE)
+```
+
+Hortaz gain, beharrezkoa ez den arren, funtzioan sartzen diren aldagaien izenak jarri daitezke, hau da, 
+
+
+```{r}
+eragiketa(x = 5, y = 2, batu = FALSE)
+```
+
+eta aldagaien izenak erabiltzen direnean, nahi den ordena erabili daiteke:
+
+
+```{r}
+eragiketa(batu = FALSE, x = 30, y = 10)
+```
+
+Amaitzeko, `eragiketa` funtzioa osatuko dugu **batuketa, kenketa, biderketa** eta **zatiketa** egiteko. Eragiketa estandar bezala **batuketa** ezarriko da.
+
+
+```{r}
+eragiketa2 <- function(x, y, z = "batuketa"){
+    if (z == "batuketa"){
+        return(x + y)
+    }
+    if (z == "kenketa"){
+        return(x - y)
+    }
+    if (z == "biderketa"){
+        return(x * y)
+    }
+    if (z == "zatiketa"){
+        return(x / y)
+    }
+}
+```
+
+
+```{r}
+eragiketa2(10,20)
+
+eragiketa2(10,20,"kenketa")
+
+eragiketa2(10,20,"biderketa")
+
+eragiketa2(10,20,"zatiketa")
+```
+
+## Aldagai lokalak vs. Aldagai globalak
+Koadernoaren azken atal honetan, aldagai lokalei eta globalei buruz hitz egingo da. ***Aldagai globalak*** `R`-ko saioan gordetzen diren aldagaiak dira, adibidez hurrengo lerroa exekutatzen baldin badugu, `x` aldagaia globalki gordeko da saio honetan.
+
+
+```{r}
+x <- "Global"
+```
+
+Aldagai globalak aztertzeko, `R`-k `ls` funtzioa du:
+
+
+```{r}
+ls()
+```
+
+Koadernoko atal guztiak exekutatu baldin badira, ikus daitekeenez, funtzioak ere aldagai modura ageri dira, izan ere `{r}`-n ***funtzioak ere objektu edo aldagai modura gordetzen dira***. Bestalde, funtzioetan definitu den `y` aldagaia ez da ageri ezta `batu` ere ez. Izan ere, aldagai horiek funtzioen barnean definitu dira ***lokalki***. Beste adibide batekin jarraituz gero, ikus dezagun hurrengoa:
+
+
+```{r error=TRUE}
+x <- 10
+
+eragiketa2 <- function(x, y, z = "batuketa"){
+    if (z == "batuketa"){
+        return(x + y)
+    }
+    if (z == "kenketa"){
+        return(x - y)
+    }
+    if (z == "biderketa"){
+        return(x * y)
+    }
+    if (z == "zatiketa"){
+        return(x / y)
+    }
+}
+
+eragiketa2(x = 20, y = 20)
+
+eragiketa2(y = 20)
+```
+
+Aldagai global bezala `x <- 10` definitu da, baina funtzioaren barruan beste `x` aldagai bat erabiltzen da lokalki era independentean, ondorioz `eragiketa2(y = 20)` egiterakoan errore bat jaurtitzen digu `x` definitu gabe dagoela esanez. 
+
+Hurrengo funtzioa hartzen baldin badugu aldiz:
+
+
+```{r}
+batu <- function(y){
+    return(x + y)
+}
+```
+
+Funtzio horretan ez da x aldagaia definitu eta hala ere funtzioaren barruan `x` aldagaia ageri da. Ondorioz, `x` aldagai hori beste nonbaitetik hartu beharko du, aldagai global batetik adibidez.
+
+
+```{r}
+x <- 30
+batu(10)
+```
+
+`x` aldagai global hori ez baldin bada existitzen ordea, errore bat jaurtiko digu
+
+
+```{r error=TRUE}
+rm(x) #remove: aldagai globala ezabatzen du
+batu(10)
+```

@@ -1,0 +1,95 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+<p align="center">
+<img src="Images/Rlogo.png"/>
+</p>
+
+# Funtzioak ulertzen
+
+Atal honetan, iada sortuta dauden funtzioen gorabehera eta aukera desberdinak aztertuko ditugu. Orain arte, koaderno ezberdinetan zehar hainbat funtzio ezberdin agertu dira eta horien erabilpen bat azaldu da. Hala ere, funtzioek malgutasuna izaten dute erabiltzaileak nahi dituen parametroak ezartzeko eta aldatzeko.
+
+Has gaitezen adibide erraz batekin, `sum` funtzioarekin hain zuzen ere. Funtzioen inguruko informazioa jakin nahi izanez gero, funtzioaren aurretik `?` ikurra jarri beharko da.
+
+
+```{r}
+?sum
+```
+
+Lerroa exekutatzerakoan, `R`-ko dokumentazioa agertuko zaigu jarritako funtzioaren inguruan, kasu honetan `sum` funtzioaren inguruan. Dokumentazioaren goialdean, funtzioaren izena agertzen da eta `{}` giltzen artean zein paketetik datorren. Kasu honetan:
+
+$$\mbox{sum \{base\}}$$
+
+hau da, `sum` funtzioa oinarrizko `R`-ren barnean instalaturik datorren funtzio bat dela adierazten digu. Bestalde, dokumentazioak zati ezberdinak izaten ditu:
+
+ - ***Description:*** Funtzioaren deskribapen labur bat.
+ - ***Usage:*** Funtzioaren erabilera edo sintaxia erakusten du.
+ - ***Arguments:*** Funtzioari sar dakizkiogun aldagaiak (eta aldagai-motak).
+ - ***Details:*** Funtzioaren inguruko deskribapen sakonagoa.
+ - ***Value:*** Funtzioak itzultzen duen objektu/aldagai/balioaren inguruko informazioa.
+ - ***Example:*** Funtzioaren erabilera ikusteko adibide batzuk.
+ 
+`sum`-en adibidean adibidez, 2 aldagai-mota onartzen ditu (***Arguments*** atalean azter daiteke). Alde batetik ***batzea*** nahi den bektorea, zenbakizkoa (zenbaki konplexuak barne) edota logikoa izan daitekeela eta bestetik `na.rm` parametroa, era estandarrean `FALSE` bezala finkaturik dagoena (hori ***Arguments***-en ikus daiteke). `na.rm` parametroa aldagai-logikoa izan beharko da eta `TRUE` finkatzen baldin bada, bektorean egon daitezkeen `NA` eta `NaN` balioak ezabatzen ditu.
+
+Jar dezagun bada proban:
+
+
+```{r}
+#Zenbakizko bektore baten batuketa
+sum(1:100)
+
+#Zenbaki konplexuzko bektore baten batuketa
+sum(c(1+2i,3+4i,1-1i))
+
+#Bektore logiko baten batuketa
+sum(c(T,T,F,T,F,F,F,T,F,F,F))
+
+#NA/NaN baliodun bektore bat
+sum(c(1,2,3,NA,5,6,NaN))
+
+#NA/NaN baliodun bektore bat, 'na.rm = TRUE'
+sum(c(1,2,3,NA,5,6,NaN), na.rm = TRUE)
+```
+
+Bestalde, ***Details***-en irakurri daitekeen bezala, `NULL` balioari 0 balioa esleitzen zaio `sum` barruan, baita multzo-hutsari ere.
+
+
+```{r}
+sum(NULL)
+
+sum(c(1,2,NULL))
+
+sum()
+```
+
+Beste adibide batekin jarraitzeko matrizeen gaiko `expm` paketea kargatuko dugu. Gogoratu, pakete hori ez dela berez instalaturik datorren pakete bat eta ondorioz instalatu eta kargatu egin beharko dela (Binder bidez, online, jarraitzen dabilen erabiltzaileak ez du ezer instalatu beharko).
+
+Beste atala batzutan esan bezala, Jupyter-en arazoak gerta daitezke paketeak instalatzeko orduan. Kasu horietarako `R`-ko saio bat zabaltzea eta bertan instalatzea gomendatzen da.
+
+
+```{r}
+#Paketea instalatzeko hurrengo lerroa exekutatu '#' kenduz
+#install.packages("expm")
+library(expm)
+```
+
+Behin instalatutakoan, `sqrtm` funtzioaren inguruko dokumentazioa aztertuko dugu:
+
+
+```{r}
+?sqrtm
+```
+
+Ikus daitekeenez, kasu honetan funtzioa `expm` paketetik dator
+$$\mbox{sqrtm \{expm\}}$$
+
+eta funtzio honen bidez matrizeen ***erro karratua*** kalkulatzen da. Horretarako, funtzioari sartu beharreko aldagaia matrize karratu bat izan beharko da. ***Details***-en ikus daitekeen bezala, erro karratua kalkulatzeko erabiltzen den metodoa ***Schur-en deskonposizioa*** da. Funtzioaren egitura ezagutzea nahi izanez gero, algoritmoa nola idatzi den jakitzeko, funtzioa bera jarri beharko dugu:
+
+
+```{r}
+sqrtm
+```
+
+Momentuz ez da jakin behar algoritmoaren barruan zer gertatzen den, baina jakin nahi izanez gero `R`-n era erraz batean ikus daiteke.
